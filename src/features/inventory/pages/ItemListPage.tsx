@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { Search, Eye, Edit2, Plus } from 'lucide-react';
+import { Search, Eye, Edit2, Plus, ChevronDown, Funnel } from 'lucide-react';
 import { getItems } from '@/api/inventoryApi';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useAuth } from '@/stores/AuthContext';
@@ -36,6 +36,7 @@ export const ItemListPage: React.FC = () => {
   const store = searchParams.get('store') || 'main';
   const itemType = searchParams.get('itemType') || 'All';
   const category = searchParams.get('category') || '';
+  const approvalRequired = searchParams.get('approvalRequired') === 'true';
   const search = searchParams.get('search') || '';
   const page = parseInt(searchParams.get('page') || '1', 10);
 
@@ -65,8 +66,8 @@ export const ItemListPage: React.FC = () => {
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ['inventory', store, { search: debouncedSearch, category, itemType, page }],
-    queryFn: () => getItems({ store, search: debouncedSearch, category, itemType, page }),
+    queryKey: ['inventory', store, { search: debouncedSearch, category, itemType, approvalRequired, page }],
+    queryFn: () => getItems({ store, search: debouncedSearch, category, itemType, approvalRequired, page }),
     staleTime: 30_000,
   });
 
@@ -76,11 +77,29 @@ export const ItemListPage: React.FC = () => {
       label: '#',
       render: (_, __, idx: number) => ((page - 1) * 10) + (idx !== undefined ? idx + 1 : 0),
     },
-    { key: 'item_name', label: 'Item Name', sortable: true },
+    {
+      key: 'item_name',
+      label: 'Item Name',
+      sortable: true,
+      render: (value: string, row) => (
+        <button
+          onClick={() => navigate(`/inventory/${row.id}`)}
+          className="font-medium text-[#0052CC] hover:underline"
+        >
+          {value}
+        </button>
+      ),
+    },
     { key: 'sku', label: 'SKU' },
     { key: 'category', label: 'Category' },
     { key: 'unit', label: 'Unit' },
-    { key: 'current_stock', label: 'Current Stock' },
+    {
+      key: 'current_stock',
+      label: 'Current Stock',
+      render: (value: number, row) => (
+        <span className={row.current_stock < row.min_stock ? 'font-bold text-red-600' : ''}>{value}</span>
+      ),
+    },
     { key: 'min_stock', label: 'Min Stock' },
     {
       key: 'approval_required',
@@ -100,10 +119,10 @@ export const ItemListPage: React.FC = () => {
       key: 'actions',
       label: 'Actions',
       render: (_, row: InventoryItem) => (
-        <div className="flex items-center gap-3">
+        <div className="flex justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
           <button 
             onClick={() => navigate(`/inventory/${row.id}`)}
-            className="text-on-surface-variant hover:text-primary transition-colors"
+            className="rounded p-1 text-slate-400 transition-colors hover:bg-blue-50 hover:text-[#0052CC]"
             title="View Details"
           >
             <Eye size={18} />
@@ -113,14 +132,14 @@ export const ItemListPage: React.FC = () => {
             <>
               <button 
                 onClick={() => {/* Open ItemFormSlideOver */}}
-                className="text-on-surface-variant hover:text-primary transition-colors"
+                className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
                 title="Edit Item"
               >
                 <Edit2 size={18} />
               </button>
               <button 
                 onClick={() => setStockInItem(row)}
-                className="text-on-surface-variant hover:text-primary transition-colors"
+                className="rounded p-1 text-slate-400 transition-colors hover:bg-green-50 hover:text-green-600"
                 title="Stock In"
               >
                 <Plus size={18} />
@@ -139,15 +158,13 @@ export const ItemListPage: React.FC = () => {
         <div className="flex flex-col gap-4 w-full">
           <div className="flex justify-between items-center w-full">
             <h1 className="font-headline-lg text-headline-lg text-on-surface">Inventory</h1>
-            {hasRole(['Admin', 'Stock Keeper', 'Inventory Manager', 'Super Admin']) && (
-              <button 
-                onClick={() => setIsAddModalOpen(true)}
-                className="bg-primary-container text-white px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-sm"
-              >
-                <span className="material-symbols-outlined text-[18px]">add</span>
-                Add Item
-              </button>
-            )}
+            <button 
+              onClick={() => setIsAddModalOpen(true)}
+              className="bg-primary-container text-white px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-sm"
+            >
+              <Plus size={18} />
+              Add Item
+            </button>
           </div>
 
           {/* Store Tabs */}
@@ -197,6 +214,7 @@ export const ItemListPage: React.FC = () => {
             <option value="stationery">Stationery</option>
             <option value="medical">Medical</option>
           </select>
+          <ChevronDown size={16} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500" />
         </div>
 
         <div className="flex items-center bg-slate-100 rounded-md p-1 w-full lg:w-auto overflow-x-auto flex-shrink-0">
@@ -215,6 +233,25 @@ export const ItemListPage: React.FC = () => {
             );
           })}
         </div>
+
+        <div className="ml-auto flex w-full items-center justify-end gap-2 lg:w-auto">
+          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-700">
+            <input
+              type="checkbox"
+              checked={approvalRequired}
+              onChange={(event) => updateFilter('approvalRequired', event.target.checked ? 'true' : '')}
+              className="rounded border-slate-300 text-primary-container focus:ring-primary-container"
+            />
+            Approval Required
+          </label>
+          <button
+            type="button"
+            title="Filter options"
+            className="rounded-md border border-transparent p-2 text-slate-500 transition-colors hover:border-slate-200 hover:bg-slate-100"
+          >
+            <Funnel size={16} />
+          </button>
+        </div>
       </div>
 
       {/* Data Table Card */}
@@ -230,7 +267,7 @@ export const ItemListPage: React.FC = () => {
             perPage: 10,
             onChange: (p) => updateFilter('page', p.toString()),
           }}
-          rowClassName={(row) => row.current_stock < row.min_stock ? 'bg-[#FFF0F0] hover:bg-[#ffeaea]' : 'hover:bg-slate-50 transition-colors'}
+          rowClassName={(row) => row.current_stock < row.min_stock ? 'group bg-[#FFF0F0] hover:bg-[#ffeaea]' : 'group hover:bg-slate-50 transition-colors'}
         />
       </div>
 

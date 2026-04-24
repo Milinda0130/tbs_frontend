@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { ArrowRight, ChevronRight, Mail, Phone, ReceiptText, Store, User } from 'lucide-react';
 import { getItem, getItemMovements } from '@/api/inventoryApi';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { useAuth } from '@/stores/AuthContext';
@@ -17,22 +18,43 @@ interface ItemMovement {
   is_addition: boolean;
 }
 
+interface ItemDetail {
+  item_name: string;
+  sku: string;
+  category: string;
+  unit: string;
+  item_type: string;
+  store_name: string;
+  approval_required: boolean;
+  created_at: string;
+  updated_at: string;
+  added_by: string;
+  supplier_name: string;
+  supplier_status: string;
+  contact_name: string;
+  supplier_phone: string;
+  supplier_email: string;
+  supplier_id?: string | null;
+  current_stock: number;
+  min_stock: number;
+}
+
 export const ItemDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { hasRole } = useAuth();
   const [stockInOpen, setStockInOpen] = useState(false);
-  
-  // Use dummy id if not provided
-  const itemId = id || '1';
+  const itemId = id ?? '';
 
   const { data: itemResponse, isLoading: itemLoading } = useQuery({
     queryKey: ['item', itemId],
     queryFn: () => getItem(itemId),
+    enabled: Boolean(itemId),
   });
 
   const { data: movementsResponse, isLoading: movementsLoading } = useQuery({
     queryKey: ['item-movements', itemId],
     queryFn: () => getItemMovements(itemId),
+    enabled: Boolean(itemId),
   });
 
   if (itemLoading || movementsLoading) {
@@ -44,7 +66,7 @@ export const ItemDetailPage: React.FC = () => {
   }
 
   // Fallbacks if data empty
-  const item = itemResponse?.data || {
+  const fallbackItem: ItemDetail = {
     item_name: 'Projector Bulb X200',
     sku: 'EQP-042',
     category: 'Electronics',
@@ -61,14 +83,16 @@ export const ItemDetailPage: React.FC = () => {
     supplier_phone: '+1 555-0192',
     supplier_email: 'd.chen@techvision.com',
     current_stock: 45,
-    min_stock: 10
+    min_stock: 10,
   };
+  const item: ItemDetail = (itemResponse?.data ?? itemResponse ?? fallbackItem) as ItemDetail;
 
-  const movements: ItemMovement[] = movementsResponse?.data || [
+  const fallbackMovements: ItemMovement[] = [
     { id: 1, date: 'Oct 24, 2024', type: 'Issued', qty: -2, reference: 'REQ-882', user: 'J. Smith', notes: 'Room 302 replacement.', is_addition: false },
     { id: 2, date: 'Oct 15, 2024', type: 'Stock In', qty: 10, reference: 'PO-441', user: 'S. Jenkins', notes: 'Bulk restock.', is_addition: true },
-    { id: 3, date: 'Sep 20, 2024', type: 'Adjustment', qty: -1, reference: 'ADJ-012', user: 'M. Thorne', notes: 'Damaged during audit.', is_addition: false }
+    { id: 3, date: 'Sep 20, 2024', type: 'Adjustment', qty: -1, reference: 'ADJ-012', user: 'M. Thorne', notes: 'Damaged during audit.', is_addition: false },
   ];
+  const movements: ItemMovement[] = (movementsResponse?.data ?? movementsResponse ?? fallbackMovements) as ItemMovement[];
 
   const currentStock = item.current_stock ?? 0;
   const minStock = item.min_stock ?? 0;
@@ -103,7 +127,7 @@ export const ItemDetailPage: React.FC = () => {
 
   return (
     <main className="flex-1 p-gutter md:p-lg overflow-y-auto mt-16 md:mt-0">
-      <div className="max-w-container-max mx-auto space-y-md">
+      <div className="max-w-[1440px] mx-auto space-y-md">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="flex text-label-md text-secondary">
           <ol className="inline-flex items-center space-x-1 md:space-x-2">
@@ -112,13 +136,13 @@ export const ItemDetailPage: React.FC = () => {
             </li>
             <li>
               <div className="flex items-center">
-                <span className="material-symbols-outlined text-sm mx-1">chevron_right</span>
+                <ChevronRight size={14} className="mx-1 text-secondary" />
                 <Link className="hover:text-primary transition-colors" to="/inventory">Inventory</Link>
               </div>
             </li>
             <li aria-current="page">
               <div className="flex items-center">
-                <span className="material-symbols-outlined text-sm mx-1">chevron_right</span>
+                <ChevronRight size={14} className="mx-1 text-secondary" />
                 <span className="text-on-surface font-semibold">{item.item_name}</span>
               </div>
             </li>
@@ -136,12 +160,12 @@ export const ItemDetailPage: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
-            {hasRole(['Inventory Manager', 'Super Admin']) && (
+            {!hasRole(['Audit Officer']) && (
               <button className="px-4 py-2 bg-surface-container-lowest text-on-surface border border-outline-variant rounded-lg font-label-md hover:bg-surface-container-low transition-colors shadow-sm">
                 Edit Item
               </button>
             )}
-            {hasRole(['Inventory Manager', 'Super Admin']) && (
+            {!hasRole(['Audit Officer']) && (
               <button
                 onClick={() => setStockInOpen(true)}
                 className="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary-container transition-colors shadow-sm"
@@ -149,7 +173,7 @@ export const ItemDetailPage: React.FC = () => {
                 Stock In
               </button>
             )}
-            {hasRole(['Inventory Manager', 'Super Admin']) && (
+            {!hasRole(['Audit Officer']) && (
               <button className="px-4 py-2 bg-surface-container-lowest text-error border border-error rounded-lg font-label-md hover:bg-error-container transition-colors shadow-sm">
                 Deactivate Item
               </button>
@@ -215,7 +239,7 @@ export const ItemDetailPage: React.FC = () => {
               <div className="flex justify-between items-center mb-sm border-b border-outline-variant pb-2">
                 <h2 className="font-headline-sm text-on-background">Movement History</h2>
                 <button className="text-primary hover:text-primary-container font-label-md flex items-center">
-                  View All <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                  View All <ArrowRight size={14} className="ml-1" />
                 </button>
               </div>
               <div className="overflow-x-auto">
@@ -283,40 +307,51 @@ export const ItemDetailPage: React.FC = () => {
               <h2 className="font-headline-sm text-on-background mb-sm border-b border-outline-variant pb-2">Supplier Information</h2>
               <div className="flex items-start space-x-4 mb-4">
                 <div className="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center border border-outline-variant flex-shrink-0">
-                  <span className="material-symbols-outlined text-primary text-2xl">storefront</span>
+                  <Store size={22} className="text-primary" />
                 </div>
-                <div>
-                  <Link className="font-headline-sm text-primary hover:text-primary-container hover:underline text-lg" to="/suppliers">{item.supplier_name}</Link>
+                <div className="min-w-0">
+                  <Link
+                    className="font-headline-sm text-primary hover:text-primary-container hover:underline text-lg break-words"
+                    to="/suppliers"
+                  >
+                    {item.supplier_name || 'N/A'}
+                  </Link>
                   <p className="font-label-md text-secondary mt-1 flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-[#15803d] mr-2"></span> {item.supplier_status}
+                    <span className="w-2 h-2 rounded-full bg-[#15803d] mr-2"></span>
+                    {item.supplier_status || 'Unknown'}
                   </p>
                 </div>
               </div>
               <div className="space-y-3 bg-surface rounded-lg p-4 border border-outline-variant/50">
                 <div className="flex items-center">
-                  <span className="material-symbols-outlined text-secondary mr-3 text-sm">person</span>
-                  <div>
+                  <User size={16} className="mr-3 text-secondary" />
+                  <div className="min-w-0">
                     <p className="font-label-md text-secondary text-[10px] uppercase tracking-wider">Contact Name</p>
-                    <p className="font-body-md text-on-surface font-medium">{item.contact_name}</p>
+                    <p className="font-body-md text-on-surface font-medium break-words">{item.contact_name || 'N/A'}</p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <span className="material-symbols-outlined text-secondary mr-3 text-sm">call</span>
-                  <div>
+                  <Phone size={16} className="mr-3 text-secondary" />
+                  <div className="min-w-0">
                     <p className="font-label-md text-secondary text-[10px] uppercase tracking-wider">Phone</p>
-                    <p className="font-body-md text-on-surface">{item.supplier_phone}</p>
+                    <p className="font-body-md text-on-surface break-words">{item.supplier_phone || 'N/A'}</p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <span className="material-symbols-outlined text-secondary mr-3 text-sm">mail</span>
-                  <div>
+                  <Mail size={16} className="mr-3 text-secondary" />
+                  <div className="min-w-0">
                     <p className="font-label-md text-secondary text-[10px] uppercase tracking-wider">Email</p>
-                    <a className="font-body-md text-primary hover:underline" href={`mailto:${item.supplier_email}`}>{item.supplier_email}</a>
+                    <a
+                      className="font-body-md text-primary hover:underline break-all"
+                      href={`mailto:${item.supplier_email || ''}`}
+                    >
+                      {item.supplier_email || 'N/A'}
+                    </a>
                   </div>
                 </div>
               </div>
               <button className="w-full mt-4 py-2 bg-surface-container-lowest text-primary border border-outline-variant rounded-lg font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center">
-                <span className="material-symbols-outlined text-sm mr-2">receipt_long</span> View Purchase Orders
+                <ReceiptText size={16} className="mr-2" /> View Purchase Orders
               </button>
             </div>
           </div>
