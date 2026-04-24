@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Search, Eye, Edit2, Plus, ChevronDown, Funnel } from 'lucide-react';
 import { getItems } from '@/api/inventoryApi';
@@ -71,6 +71,7 @@ export const ItemListPage: React.FC = () => {
     queryKey: ['inventory', store, { search: debouncedSearch, category, itemType, approvalRequired, page }],
     queryFn: () => getItems({ store, search: debouncedSearch, category, itemType, approvalRequired, page }),
     staleTime: 30_000,
+    placeholderData: keepPreviousData,
   });
 
   const columns: Column<InventoryItem>[] = [

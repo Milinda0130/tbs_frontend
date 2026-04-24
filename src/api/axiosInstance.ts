@@ -17,7 +17,7 @@ const axiosInstance = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
-  timeout: 15000,
+  timeout: 8000,
 })
 
 // ─── Request Interceptor ─────────────────────────────────────────────────────

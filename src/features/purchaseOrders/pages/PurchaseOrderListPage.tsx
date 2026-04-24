@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Eye, Filter, Plus } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getPurchaseOrders } from '@/api/purchaseOrderApi';
@@ -40,6 +40,7 @@ export function PurchaseOrderListPage() {
     queryKey: ['purchase-orders', status, { supplier, dateRange, page }],
     queryFn: () => getPurchaseOrders({ status: status === 'All Orders' ? undefined : status, supplier, dateRange, page }),
     staleTime: 30_000,
+    placeholderData: keepPreviousData,
   });
 
   const rows: PurchaseOrderRow[] = useMemo(() => ((data?.items ?? data ?? []) as PurchaseOrderRow[]), [data]);

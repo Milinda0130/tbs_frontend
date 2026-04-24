@@ -114,7 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     axiosInstance
-      .get<AuthUser>('/auth/me')
+      .get<AuthUser>('/auth/me', { timeout: 5000 })
       .then(res => {
         setTokenState(stored)
         setUser(res.data)

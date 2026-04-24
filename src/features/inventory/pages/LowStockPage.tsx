@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { AlertTriangle, Download, FilePlus2 } from 'lucide-react';
 import { getLowStock } from '@/api/inventoryApi';
@@ -31,6 +31,7 @@ export function LowStockPage() {
     queryKey: ['low-stock', { store }],
     queryFn: () => getLowStock(store === 'all' ? {} : { store }),
     staleTime: 30_000,
+    placeholderData: keepPreviousData,
   });
 
   const rows: LowStockItem[] = useMemo(() => {

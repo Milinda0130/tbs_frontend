@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Edit2, Mail, Phone, Plus, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getSuppliers } from '@/api/supplierApi';
@@ -22,6 +22,7 @@ export function SupplierListPage() {
     queryKey: ['suppliers', { search: debouncedSearch }],
     queryFn: () => getSuppliers({ search: debouncedSearch }),
     staleTime: 30_000,
+    placeholderData: keepPreviousData,
   });
 
   const suppliers: Supplier[] = useMemo(
