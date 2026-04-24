@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { Search, Eye, Edit2, Plus, Download } from 'lucide-react';
+import { Search, Eye, Edit2, Plus } from 'lucide-react';
 import { getItems } from '@/api/inventoryApi';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useAuth } from '@/stores/AuthContext';
 import { DataTable, Column } from '@/components/ui/DataTable';
 import { Badge } from '@/components/ui/Badge';
+import { StockInSlideOver } from '@/features/inventory/components/StockInSlideOver';
 
 interface InventoryItem {
   id: string;
@@ -41,6 +42,7 @@ export const ItemListPage: React.FC = () => {
   const [searchInput, setSearchInput] = useState(search);
   const debouncedSearch = useDebounce(searchInput, 300);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [stockInItem, setStockInItem] = useState<InventoryItem | null>(null);
 
   useEffect(() => {
     if (debouncedSearch !== search) {
@@ -117,7 +119,7 @@ export const ItemListPage: React.FC = () => {
                 <Edit2 size={18} />
               </button>
               <button 
-                onClick={() => {/* Open StockInSlideOver */}}
+                onClick={() => setStockInItem(row)}
                 className="text-on-surface-variant hover:text-primary transition-colors"
                 title="Stock In"
               >
@@ -250,6 +252,14 @@ export const ItemListPage: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {stockInItem && (
+        <StockInSlideOver
+          open
+          item={stockInItem}
+          onClose={() => setStockInItem(null)}
+        />
       )}
     </main>
   );

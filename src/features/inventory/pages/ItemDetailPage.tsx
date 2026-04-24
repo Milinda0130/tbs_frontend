@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getItem, getItemMovements } from '@/api/inventoryApi';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { useAuth } from '@/stores/AuthContext';
+import { StockInSlideOver } from '@/features/inventory/components/StockInSlideOver';
+
+interface ItemMovement {
+  id: number;
+  date: string;
+  type: 'Issued' | 'Stock In' | 'Adjustment';
+  qty: number;
+  reference: string;
+  user: string;
+  notes: string;
+  is_addition: boolean;
+}
 
 export const ItemDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { hasRole } = useAuth();
+  const [stockInOpen, setStockInOpen] = useState(false);
   
   // Use dummy id if not provided
   const itemId = id || '1';
@@ -51,7 +64,7 @@ export const ItemDetailPage: React.FC = () => {
     min_stock: 10
   };
 
-  const movements = movementsResponse?.data || [
+  const movements: ItemMovement[] = movementsResponse?.data || [
     { id: 1, date: 'Oct 24, 2024', type: 'Issued', qty: -2, reference: 'REQ-882', user: 'J. Smith', notes: 'Room 302 replacement.', is_addition: false },
     { id: 2, date: 'Oct 15, 2024', type: 'Stock In', qty: 10, reference: 'PO-441', user: 'S. Jenkins', notes: 'Bulk restock.', is_addition: true },
     { id: 3, date: 'Sep 20, 2024', type: 'Adjustment', qty: -1, reference: 'ADJ-012', user: 'M. Thorne', notes: 'Damaged during audit.', is_addition: false }
@@ -129,7 +142,10 @@ export const ItemDetailPage: React.FC = () => {
               </button>
             )}
             {hasRole(['Inventory Manager', 'Super Admin']) && (
-              <button className="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary-container transition-colors shadow-sm">
+              <button
+                onClick={() => setStockInOpen(true)}
+                className="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary-container transition-colors shadow-sm"
+              >
                 Stock In
               </button>
             )}
@@ -215,7 +231,7 @@ export const ItemDetailPage: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-outline-variant/50">
-                    {movements.map((mov: any) => (
+                    {movements.map((mov) => (
                       <tr key={mov.id} className="hover:bg-surface/50 transition-colors">
                         <td className="px-4 py-3 whitespace-nowrap">{mov.date}</td>
                         <td className="px-4 py-3">
@@ -306,6 +322,20 @@ export const ItemDetailPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {stockInOpen && (
+        <StockInSlideOver
+          open
+          item={{
+            id: itemId,
+            item_name: item.item_name,
+            current_stock: currentStock,
+            unit: item.unit ?? 'Units',
+            supplier_id: item.supplier_id ?? null,
+          }}
+          onClose={() => setStockInOpen(false)}
+        />
+      )}
     </main>
   );
 };

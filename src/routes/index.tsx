@@ -1,17 +1,16 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { ItemListPage } from '@/features/inventory/pages/ItemListPage';
 import { ItemDetailPage } from '@/features/inventory/pages/ItemDetailPage';
+import { LowStockPage } from '@/features/inventory/pages/LowStockPage';
 import { AuthProvider } from '@/stores/AuthContext';
-
-const AppLayout = () => (
-  <AuthProvider>
-    <Outlet />
-  </AuthProvider>
-);
 
 export const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    element: (
+      <AuthProvider>
+        <Outlet />
+      </AuthProvider>
+    ),
     children: [
       {
         path: '/',
@@ -24,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: '/inventory/:id',
         element: <ItemDetailPage />,
+      },
+      {
+        path: '/inventory/low-stock',
+        element: <LowStockPage />,
       },
     ]
   }
