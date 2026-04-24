@@ -1,69 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
   body {
-    @apply bg-slate-950 text-slate-100 font-sans;
-    min-height: 100vh;
+    @apply bg-background text-on_background font-sans antialiased;
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  h1 {
+    @apply text-[32px] font-bold leading-[40px] tracking-[-0.02em];
   }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-slate-900;
+  h2 {
+    @apply text-[24px] font-bold leading-[32px] tracking-[-0.01em];
   }
 
-  ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700 rounded-full;
+  h3 {
+    @apply text-[20px] font-semibold leading-[28px];
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-600;
+  p {
+    @apply text-[16px] font-normal leading-[24px];
+  }
+
+  .label-bold {
+    @apply text-[12px] font-bold leading-[16px] tracking-[0.05em] uppercase;
+  }
+
+  .label-md {
+    @apply text-[12px] font-semibold leading-[16px];
   }
 }
 
 @layer components {
-  /* Loading skeleton animation */
-  .skeleton {
-    @apply animate-pulse bg-slate-800 rounded;
+  .btn-primary {
+    @apply bg-primary text-on_primary px-4 py-2 rounded-DEFAULT font-semibold transition-colors hover:bg-primary_container active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
   }
 
-  /* Focus ring */
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-slate-950;
+  .btn-secondary {
+    @apply bg-transparent border border-outline text-on_surface px-4 py-2 rounded-DEFAULT font-semibold transition-colors hover:bg-surface_container active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
   }
 
-  /* Card base */
-  .card {
-    @apply bg-slate-900 border border-slate-800 rounded-xl shadow-lg;
-  }
-
-  /* Badge */
-  .badge {
-    @apply inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold rounded-full;
+  .card-container {
+    @apply bg-surface_container_lowest border border-outline_variant rounded-lg shadow-card overflow-hidden;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
