@@ -34,3 +34,26 @@ export const getLowStock = async (params?: Record<string, unknown>) => {
   const { data } = await axiosInstance.get('/inventory/low-stock', { params });
   return data;
 };
+
+export const inventoryApi = {
+  search: async (query: string) => {
+    const { data } = await axiosInstance.get('/inventory', {
+      params: { search: query },
+    });
+    return data;
+  },
+
+  getAll: async (params?: Record<string, unknown>) => getItems(params),
+
+  getById: async (id: number | string) => getItem(String(id)),
+
+  getLowStock: async (params?: Record<string, unknown>) => getLowStock(params),
+
+  update: async (id: number | string, payload: Record<string, unknown>) =>
+    updateItem(String(id), payload),
+
+  adjustStock: async (id: number | string, quantity: number, reason: string) => {
+    const { data } = await axiosInstance.post(`/inventory/${id}/adjust`, { quantity, reason });
+    return data;
+  },
+};

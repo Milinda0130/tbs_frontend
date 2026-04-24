@@ -14,6 +14,7 @@ import axiosInstance from '@/api/axiosInstance'
 
 export type UserRole =
   | 'Admin'
+  | 'Main Coordinator'
   | 'Stock Keeper'
   | 'Audit Officer'
   | 'Faculty'
@@ -69,6 +70,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setTokenState] = useState<string | null>(_token)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const logoutRef = useRef<() => void>(() => {})
+  const DEMO_MODE = import.meta.env.VITE_DEMO_MODE === 'true'
+
+  const demoUser: AuthUser = {
+    id: 4,
+    name: 'Demo Audit Officer',
+    email: 'demo@tbs.edu',
+    role: 'Audit Officer',
+    department: 'Compliance',
+  }
 
   const logout = useCallback(() => {
     setAuthToken(null)
@@ -91,13 +101,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Redirect to role default page
     const roleDefaults: Record<UserRole, string> = {
-      Admin:           '/dashboard',
+      Admin:           '/inventory',
+      'Main Coordinator': '/purchase-orders',
       'Stock Keeper':  '/inventory',
-      'Audit Officer': '/reports',
+      'Audit Officer': '/issuing-history',
       Faculty:         '/borrow-requests',
       'Dept Admin':    '/borrow-requests',
     }
-    navigate(roleDefaults[newUser.role] ?? '/dashboard', { replace: true })
+    navigate(roleDefaults[newUser.role] ?? '/inventory', { replace: true })
   }, [navigate])
 
   const hasRole = useCallback(
@@ -107,8 +118,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // On mount: if token exists in sessionStorage, verify with backend
   useEffect(() => {
+    if (DEMO_MODE) {
+      setAuthToken('demo-token')
+      setTokenState('demo-token')
+      setUser(demoUser)
+      setIsLoading(false)
+      return
+    }
+
     const stored = sessionStorage.getItem('tbs_token')
     if (!stored) {
+      setAuthToken(null)
+      setTokenState(null)
+      setUser(null)
       setIsLoading(false)
       return
     }
