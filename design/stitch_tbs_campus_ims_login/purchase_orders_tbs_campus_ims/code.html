@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Purchase Orders - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d7e3fb",
+                        "secondary-container": "#d1e5fa",
+                        "primary-container": "#0052cc",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#003d9b",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "surface-dim": "#cedbf2",
+                        "on-secondary-container": "#546678",
+                        "surface-variant": "#d7e3fb",
+                        "inverse-primary": "#b2c5ff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-surface-variant": "#434654",
+                        "on-primary-fixed": "#001848",
+                        "background": "#f9f9ff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary-fixed": "#dae2ff",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary": "#7b2600",
+                        "on-surface": "#101c2d",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#101c2d",
+                        "tertiary-container": "#a33500",
+                        "secondary": "#4e6072",
+                        "on-secondary-fixed": "#091d2d",
+                        "surface-container-high": "#dee9ff",
+                        "outline": "#737685",
+                        "inverse-surface": "#253143",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container": "#e7eeff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0c56d0",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "secondary-fixed": "#d1e5fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "48px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "lg": "32px",
+                        "container-max": "1440px",
+                        "md": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-white dark:bg-slate-900 font-public-sans text-[13px] leading-tight fixed left-0 top-0 h-full w-64 border-r border-r border-slate-200 dark:border-slate-800 flat no shadows flex flex-col h-full p-4 space-y-2 z-50">
+<div class="mb-8 px-3">
+<div class="text-xl font-black text-blue-700 dark:text-blue-400">TBS Campus</div>
+<div class="text-slate-500 dark:text-slate-400 mt-1">Logistics Management</div>
+</div>
+<button class="bg-primary text-on-primary font-label-md py-2 px-4 rounded-DEFAULT w-full mb-6 hover:opacity-90 transition-opacity">
+            Create New PO
+        </button>
+<div class="flex-grow space-y-1">
+<a class="text-slate-600 dark:text-slate-400 px-3 py-2 flex items-center gap-3 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150 rounded-md" href="/dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-3 py-2 flex items-center gap-3 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150 rounded-md" href="/inventory">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold rounded-md px-3 py-2 flex items-center gap-3 Active: scale-[0.98] transition-transform hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150" href="/purchase-orders">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span>Purchase Orders</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-3 py-2 flex items-center gap-3 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150 rounded-md" href="/asset-tracking">
+<span class="material-symbols-outlined">category</span>
+<span>Asset Tracking</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-3 py-2 flex items-center gap-3 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150 rounded-md" href="/settings">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-200 dark:border-slate-800 space-y-1">
+<a class="text-slate-600 dark:text-slate-400 px-3 py-2 flex items-center gap-3 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150 rounded-md" href="/support">
+<span class="material-symbols-outlined">contact_support</span>
+<span>Support</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-3 py-2 flex items-center gap-3 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-150 rounded-md" href="/logout">
+<span class="material-symbols-outlined">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 font-public-sans antialiased text-sm font-medium fixed top-0 right-0 z-40 border-b border-b border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none flex items-center justify-between px-6 h-16 w-[calc(100%-256px)] ml-64">
+<div class="flex items-center gap-4">
+<!-- Search placeholder for structure -->
+<div class="relative w-64 hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary text-body-md bg-surface-container-lowest" placeholder="Search orders..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors p-2 rounded-full Active: opacity-80 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors p-2 rounded-full Active: opacity-80 transition-opacity">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors p-2 rounded-full Active: opacity-80 transition-opacity">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 flex-1 p-8">
+<div class="max-w-[1440px] mx-auto space-y-lg">
+<!-- Page Header -->
+<div class="flex justify-between items-center">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Purchase Orders</h1>
+<button class="bg-primary text-on-primary font-label-md text-label-md py-2 px-6 rounded-DEFAULT hover:opacity-90 transition-opacity shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Purchase Order
+                </button>
+</div>
+<!-- Filters & Controls Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)] space-y-6">
+<!-- Status Tabs -->
+<div class="border-b border-outline-variant flex gap-8">
+<button class="pb-3 border-b-2 border-primary text-primary font-label-md text-label-md">All Orders</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">Draft</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">Ordered</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">Received</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">Cancelled</button>
+</div>
+<!-- Secondary Filters -->
+<div class="flex gap-4 items-end">
+<div class="flex-1 max-w-xs">
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">SUPPLIER</label>
+<select class="w-full border border-outline-variant rounded-DEFAULT py-2 px-3 focus:border-primary focus:ring-1 focus:ring-primary text-body-md text-on-surface bg-surface-container-lowest">
+<option>All Suppliers</option>
+<option>TechPro Solutions Inc.</option>
+<option>Campus Supplies Co.</option>
+<option>Global Furnishings</option>
+</select>
+</div>
+<div class="flex-1 max-w-xs">
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">DATE RANGE</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">calendar_today</span>
+<input class="w-full pl-10 pr-3 py-2 border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary text-body-md text-on-surface bg-surface-container-lowest" placeholder="Select dates..." type="text"/>
+</div>
+</div>
+<button class="border border-outline-variant text-on-surface bg-transparent font-label-md text-label-md py-2 px-4 rounded-DEFAULT hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        More Filters
+                    </button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_2px_4px_rgba(0,0,0,0.05)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">PO NUMBER</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">SUPPLIER</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">ORDER DATE</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">STATUS</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap text-right">TOTAL AMOUNT</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">ORDERED BY</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">RECEIVED BY</th>
+<th class="py-4 px-6 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap text-center">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="window.location.href='/purchase-orders/PO-2023-085'">
+<td class="py-4 px-6 font-medium text-primary">PO-2023-085</td>
+<td class="py-4 px-6"><a class="hover:underline" href="/suppliers/12">TechPro Solutions Inc.</a></td>
+<td class="py-4 px-6 text-on-surface-variant">Oct 12, 2023</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">
+                                        Ordered
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right font-medium">450,000 LKR</td>
+<td class="py-4 px-6 text-on-surface-variant">J. Smith</td>
+<td class="py-4 px-6 text-on-surface-variant">-</td>
+<td class="py-4 px-6 text-center">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="window.location.href='/purchase-orders/PO-2023-084'">
+<td class="py-4 px-6 font-medium text-primary">PO-2023-084</td>
+<td class="py-4 px-6"><a class="hover:underline" href="/suppliers/45">Campus Supplies Co.</a></td>
+<td class="py-4 px-6 text-on-surface-variant">Oct 10, 2023</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#E8F5E9] text-[#2E7D32]">
+                                        Received
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right font-medium">125,500 LKR</td>
+<td class="py-4 px-6 text-on-surface-variant">A. Perera</td>
+<td class="py-4 px-6 text-on-surface-variant">M. Silva</td>
+<td class="py-4 px-6 text-center">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="window.location.href='/purchase-orders/PO-2023-083'">
+<td class="py-4 px-6 font-medium text-primary">PO-2023-083</td>
+<td class="py-4 px-6"><a class="hover:underline" href="/suppliers/8">Global Furnishings</a></td>
+<td class="py-4 px-6 text-on-surface-variant">Oct 09, 2023</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-surface-variant text-on-surface-variant">
+                                        Draft
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right font-medium">850,000 LKR</td>
+<td class="py-4 px-6 text-on-surface-variant">J. Smith</td>
+<td class="py-4 px-6 text-on-surface-variant">-</td>
+<td class="py-4 px-6 text-center">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="window.location.href='/purchase-orders/PO-2023-082'">
+<td class="py-4 px-6 font-medium text-primary">PO-2023-082</td>
+<td class="py-4 px-6"><a class="hover:underline" href="/suppliers/12">TechPro Solutions Inc.</a></td>
+<td class="py-4 px-6 text-on-surface-variant">Oct 05, 2023</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-error-container text-on-error-container">
+                                        Cancelled
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right font-medium">65,000 LKR</td>
+<td class="py-4 px-6 text-on-surface-variant">K. Fernando</td>
+<td class="py-4 px-6 text-on-surface-variant">-</td>
+<td class="py-4 px-6 text-center">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<span class="text-body-md text-on-surface-variant">Showing 1 to 4 of 24 entries</span>
+<div class="flex items-center gap-2">
+<button class="p-1 border border-outline-variant rounded-DEFAULT text-outline hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-DEFAULT bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-DEFAULT border border-outline-variant text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-DEFAULT border border-outline-variant text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md">3</button>
+<span class="text-on-surface-variant px-1">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-DEFAULT border border-outline-variant text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md">6</button>
+<button class="p-1 border border-outline-variant rounded-DEFAULT text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

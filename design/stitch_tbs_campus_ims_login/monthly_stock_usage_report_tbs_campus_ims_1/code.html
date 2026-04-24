@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monthly Stock Usage Report - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#546678",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary-container": "#a33500",
+                        "surface-variant": "#d7e3fb",
+                        "surface-container-low": "#f0f3ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#d1e5fa",
+                        "on-primary-container": "#c4d2ff",
+                        "surface-dim": "#cedbf2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#091d2d",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dee9ff",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-surface-variant": "#434654",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "on-surface": "#101c2d",
+                        "surface-bright": "#f9f9ff",
+                        "primary-container": "#0052cc",
+                        "on-background": "#101c2d",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "primary": "#003d9b",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-primary-fixed": "#001848",
+                        "secondary": "#4e6072",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b2c5ff",
+                        "background": "#f9f9ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9ff",
+                        "surface-tint": "#0c56d0",
+                        "tertiary-fixed": "#ffdbcf",
+                        "secondary-fixed": "#d1e5fa",
+                        "tertiary": "#7b2600",
+                        "surface-container": "#e7eeff",
+                        "error": "#ba1a1a",
+                        "outline": "#737685",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "inverse-surface": "#253143",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary-fixed-dim": "#b6c8dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "lg": "32px",
+                        "xs": "8px",
+                        "xl": "48px",
+                        "sm": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-64 border-r border-outline-variant bg-surface-container-lowest fixed left-0 top-0 flex-col pt-16 z-10">
+<div class="px-md mb-lg">
+<h2 class="font-headline-sm text-primary">TBS Campus</h2>
+<p class="font-label-md text-secondary">Inventory System</p>
+</div>
+<ul class="flex-1 flex flex-col gap-xs px-xs">
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-outline">dashboard</span>
+<span class="font-label-md">Overview</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-outline">inventory_2</span>
+<span class="font-label-md">Stock Levels</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT bg-surface-variant text-primary font-semibold border-r-4 border-primary cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-md">Usage Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-outline">domain</span>
+<span class="font-label-md">Department Assets</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-all cursor-pointer duration-200 mt-auto" href="#">
+<span class="material-symbols-outlined text-outline">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 border-b border-outline-variant bg-surface-container-lowest shadow-sm z-20 sticky">
+<div class="flex justify-between items-center w-full px-8 py-3 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-sm md:hidden">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-xs rounded-DEFAULT transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="text-lg font-bold text-primary">TBS Campus IMS</span>
+</div>
+<div class="hidden md:flex items-center gap-md font-['Public_Sans'] text-sm tracking-tight w-full max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-xl pr-sm py-xs bg-surface-container-low border border-outline-variant rounded-DEFAULT text-on-surface font-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Search inventory..." type="text"/>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-lg ml-auto mr-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Inventory</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold font-label-md" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Admin</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-xs rounded-DEFAULT transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-xs rounded-DEFAULT transition-colors active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-xs rounded-DEFAULT transition-colors active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-md md:p-lg max-w-container-max mx-auto w-full">
+<!-- Breadcrumb & Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-sm">
+<div>
+<nav class="flex items-center gap-xs text-secondary font-body-md mb-xs">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Reports</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Monthly Stock Usage</span>
+</nav>
+<h1 class="font-headline-lg text-on-surface">Monthly Stock Usage Report</h1>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-xs px-sm py-xs border border-outline-variant rounded-DEFAULT bg-surface-container-lowest text-on-surface font-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Export
+                        <span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+<div class="absolute right-0 mt-xs w-32 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-sm hidden group-hover:block z-10">
+<a class="block px-sm py-xs text-on-surface font-body-md hover:bg-surface-container-low transition-colors" href="#">PDF</a>
+<a class="block px-sm py-xs text-on-surface font-body-md hover:bg-surface-container-low transition-colors" href="#">Excel</a>
+</div>
+</div>
+</div>
+<!-- Filters Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md mb-lg shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md items-end">
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-on-surface-variant uppercase tracking-wider">Month/Year</label>
+<input class="w-full px-sm py-xs bg-surface-container-lowest border border-outline-variant rounded-DEFAULT text-on-surface font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors" type="month" value="2023-10"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-on-surface-variant uppercase tracking-wider">Store</label>
+<select class="w-full px-sm py-xs bg-surface-container-lowest border border-outline-variant rounded-DEFAULT text-on-surface font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none">
+<option>All</option>
+<option>Main Store</option>
+<option>Nursing Stock</option>
+<option>Hospitality Stock</option>
+<option>Media Equipment Store</option>
+</select>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-on-surface-variant uppercase tracking-wider">Department</label>
+<select class="w-full px-sm py-xs bg-surface-container-lowest border border-outline-variant rounded-DEFAULT text-on-surface font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none">
+<option>All</option>
+<option>Hospitality</option>
+<option>Nursing</option>
+<option>Computing</option>
+</select>
+</div>
+<div class="flex justify-end">
+<button class="w-full md:w-auto px-lg py-xs bg-primary text-on-primary font-label-md rounded-DEFAULT hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+                            Generate Report
+                        </button>
+</div>
+</div>
+</div>
+<!-- Results Data Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col h-[500px]">
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left min-w-[900px] border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant sticky top-0 z-10">
+<tr>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider">Item Name</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider">Store</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider text-right">Opening Stock</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider text-right">Stock In</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider text-right">Qty Issued</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider text-right">Qty Borrowed</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider text-right">Qty Wasted</th>
+<th class="p-sm font-label-bold text-on-surface-variant uppercase tracking-wider text-right">Closing Stock</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-body-md text-on-surface bg-surface-container-lowest">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-semibold">Printer Paper A4</td>
+<td class="p-sm text-secondary">Stationery</td>
+<td class="p-sm text-secondary">Main Store</td>
+<td class="p-sm text-right">500</td>
+<td class="p-sm text-right">200</td>
+<td class="p-sm text-right">150</td>
+<td class="p-sm text-right">0</td>
+<td class="p-sm text-right">5</td>
+<td class="p-sm text-right font-semibold">545</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-semibold">Surgical Masks</td>
+<td class="p-sm text-secondary">PPE</td>
+<td class="p-sm text-secondary">Nursing Stock</td>
+<td class="p-sm text-right">1200</td>
+<td class="p-sm text-right">500</td>
+<td class="p-sm text-right">400</td>
+<td class="p-sm text-right">0</td>
+<td class="p-sm text-right">12</td>
+<td class="p-sm text-right font-semibold">1288</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-semibold">Chef Hats</td>
+<td class="p-sm text-secondary">Uniforms</td>
+<td class="p-sm text-secondary">Hospitality Stock</td>
+<td class="p-sm text-right">150</td>
+<td class="p-sm text-right">0</td>
+<td class="p-sm text-right">45</td>
+<td class="p-sm text-right">10</td>
+<td class="p-sm text-right">2</td>
+<td class="p-sm text-right font-semibold">93</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-container-low border-t-2 border-outline-variant sticky bottom-0 z-10">
+<tr>
+<td class="p-sm font-label-bold text-on-surface-variant uppercase text-right tracking-wider" colspan="3">Totals</td>
+<td class="p-sm font-semibold text-right text-on-surface">1850</td>
+<td class="p-sm font-semibold text-right text-on-surface">700</td>
+<td class="p-sm font-semibold text-right text-on-surface">595</td>
+<td class="p-sm font-semibold text-right text-on-surface">10</td>
+<td class="p-sm font-semibold text-right text-on-surface">19</td>
+<td class="p-sm font-semibold text-right text-primary">1926</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Empty State Example (Hidden by default, structure provided) -->
+<!--
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center shadow-sm h-64 mt-lg">
+                <span class="material-symbols-outlined text-[48px] text-outline mb-sm" style="font-variation-settings: 'wght' 200;">search_off</span>
+                <h3 class="font-headline-sm text-on-surface mb-xs">No Results</h3>
+                <p class="font-body-md text-secondary max-w-md">No stock movements found for the selected period and filters. Try adjusting your search criteria.</p>
+            </div>
+            -->
+</main>
+</div>
+</body></html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TBS Campus IMS - Record Stock In</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Public Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434654",
+                        "on-surface": "#101c2d",
+                        "surface-container": "#e7eeff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0052cc",
+                        "tertiary-fixed": "#ffdbcf",
+                        "secondary-container": "#d1e5fa",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#253143",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "primary": "#003d9b",
+                        "secondary-fixed": "#d1e5fa",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "primary-fixed": "#dae2ff",
+                        "on-primary-fixed": "#001848",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "outline": "#737685",
+                        "on-secondary-fixed": "#091d2d",
+                        "on-secondary-container": "#546678",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "surface": "#f9f9ff",
+                        "tertiary": "#7b2600",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0c56d0",
+                        "secondary": "#4e6072",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-variant": "#d7e3fb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "surface-container-highest": "#d7e3fb",
+                        "surface-container-high": "#dee9ff",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "tertiary-container": "#a33500",
+                        "surface-container-low": "#f0f3ff",
+                        "outline-variant": "#c3c6d6",
+                        "surface-bright": "#f9f9ff",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-dim": "#cedbf2",
+                        "on-background": "#101c2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "lg": "32px",
+                        "xl": "48px",
+                        "base": "4px",
+                        "md": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden h-screen w-full flex">
+<!-- BACKGROUND CONTEXT (Inventory Item Detail View - Blurred out) -->
+<!-- Shared Component: SideNavBar (Desktop) -->
+<nav aria-label="Main Navigation" class="hidden md:flex flex-col w-64 bg-surface-container-low border-r border-outline-variant h-full p-4 z-10 shrink-0">
+<div class="flex items-center gap-3 px-4 mb-8 mt-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="font-label-bold text-label-bold text-on-surface">Operations Portal</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Administrative Unit</p>
+</div>
+</div>
+<ul class="flex flex-col gap-1">
+<li>
+<!-- Active Nav Item -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary border-r-4 border-primary rounded-l-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="font-label-bold text-label-bold">Asset Registry</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">domain</span>
+<span class="font-label-bold text-label-bold">Building Search</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span class="font-label-bold text-label-bold">Departmental Audit</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+<span class="font-label-bold text-label-bold">Stock Movements</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-label-bold text-label-bold">User Management</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area (Background) -->
+<div class="flex-1 flex flex-col min-w-0 h-full relative">
+<!-- Shared Component: TopNavBar -->
+<header class="h-16 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-gutter shrink-0 z-10 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-tight">TBS Campus IMS</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors h-10" placeholder="Search assets..." type="text"/>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden ml-2 border border-outline-variant">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in his 30s with short dark hair, wearing a crisp blue dress shirt, smiling subtly against a soft neutral gray background with studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoYAR_LsQSgbA27KH1k4S24sd7cd1k22LURN3px9KBXME1wzdS8s0dSiPO6SN-lcYLfYE_8SYcAhDnfjifDRmtx8HmKfO4kVwTtbzItptNxqBaJYX_YVzpwSOj0ahIoxLnHwIZMtVos3sPyJ7bnVzLzX0_NN00pNEAZGSJvOtd0eQRMKHpSzUFJQsDkFoVeFZV5-KARe4sZ1dRtWTT_Z56c1a7z0fZnwlz0rCE-0Dp6bhGD4hWqfUKmoyOMeQ4EoqdV4XFCJFKobM"/>
+</div>
+</div>
+</header>
+<!-- Dummy Detail Content -->
+<main class="flex-1 p-lg overflow-y-auto w-full max-w-container-max mx-auto">
+<div class="mb-lg flex justify-between items-start">
+<div>
+<div class="flex items-center gap-xs mb-2">
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded font-label-bold text-label-bold uppercase">Consumable</span>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-label-bold text-label-bold uppercase">Low Stock</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Projector Bulb X200</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">SKU: PB-X200-8842 • Lecture Hall Alpha</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Fake Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-gutter shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md border-b border-outline-variant pb-xs">Inventory Status</h3>
+<div class="grid grid-cols-3 gap-md">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Current Quantity</p>
+<p class="font-headline-md text-headline-md text-on-surface">45 <span class="font-body-md text-body-md text-on-surface-variant">units</span></p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Minimum Threshold</p>
+<p class="font-headline-md text-headline-md text-on-surface">50 <span class="font-body-md text-body-md text-on-surface-variant">units</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- ========================================== -->
+<!-- OVERLAY & SLIDE-OVER FORM                  -->
+<!-- ========================================== -->
+<!-- Backdrop Blur -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-[2px] z-40 transition-opacity"></div>
+<!-- Slide-over Container -->
+<aside aria-labelledby="slideover-title" aria-modal="true" class="fixed right-0 top-0 bottom-0 w-full md:w-[560px] bg-surface-container-lowest z-50 flex flex-col shadow-[-8px_0_32px_rgba(0,0,0,0.12)] border-l border-outline-variant transform transition-transform duration-300 ease-in-out translate-x-0" role="dialog">
+<!-- Header -->
+<div class="px-gutter py-5 border-b border-outline-variant flex justify-between items-start bg-surface-container-lowest shrink-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1" id="slideover-title">Record Stock Received</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant bg-surface-container-low px-2 py-1 rounded w-fit border border-outline-variant/50">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider">Projector Bulb X200</span>
+</div>
+</div>
+<button aria-label="Close panel" class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant p-2 rounded-full transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<div class="flex-1 overflow-y-auto p-gutter bg-surface-bright">
+<form class="flex flex-col gap-md max-w-md" id="stock-in-form">
+<!-- Quantity Received -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface" for="quantity">Quantity Received <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-10 px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest font-body-lg text-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="quantity" min="1" name="quantity" required="" type="number" value="10"/>
+</div>
+<p class="font-label-md text-label-md text-primary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                        New stock level will be: 55
+                    </p>
+</div>
+<!-- Date Received -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface" for="date_received">Date Received <span class="text-error">*</span></label>
+<input class="w-full h-10 px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="date_received" name="date_received" required="" type="date" value="2023-10-24"/>
+</div>
+<!-- Supplier -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface" for="supplier">Supplier</label>
+<div class="relative">
+<select class="w-full h-10 pl-3 pr-10 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none" id="supplier" name="supplier">
+<option selected="" value="techvision">TechVision Solutions</option>
+<option value="av_supply">AV Supply Co.</option>
+<option value="campus_stores">Central Campus Stores</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Unit Cost -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface" for="unit_cost">Unit Cost</label>
+<div class="relative">
+<span class="absolute left-3 top-2 text-on-surface-variant font-body-md text-body-md">$</span>
+<input class="w-full h-10 pl-7 pr-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="unit_cost" name="unit_cost" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant">Cost per unit at time of receipt.</p>
+</div>
+<!-- Purchase Order Reference -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface" for="po_ref">Purchase Order Reference</label>
+<input class="w-full h-10 px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="po_ref" name="po_ref" placeholder="e.g. PO-2023-892" type="text"/>
+<p class="font-body-md text-[13px] text-on-surface-variant">Enter PO number if applicable.</p>
+</div>
+<!-- Notes -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface" for="notes">Notes</label>
+<textarea class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" id="notes" name="notes" placeholder="Add any details about condition, partial deliveries, etc." rows="3"></textarea>
+</div>
+</form>
+</div>
+<!-- Footer Actions -->
+<div class="px-gutter py-4 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-end gap-3 shrink-0">
+<button class="h-10 px-5 rounded-lg border border-outline-variant text-on-surface bg-transparent font-label-bold text-label-bold hover:bg-surface-variant transition-colors focus:ring-2 focus:ring-outline-variant focus:outline-none" type="button">
+                Cancel
+            </button>
+<button class="h-10 px-5 rounded-lg bg-primary text-on-primary font-label-bold text-label-bold hover:opacity-90 transition-opacity flex items-center gap-2 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none shadow-[0_1px_2px_rgba(0,0,0,0.12)]" form="stock-in-form" type="submit">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                Record Stock In
+            </button>
+</div>
+</aside>
+</body></html>

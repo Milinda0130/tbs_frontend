@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TBS Campus IMS - Sign In</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d7e3fb",
+                        "on-secondary-container": "#546678",
+                        "inverse-primary": "#b2c5ff",
+                        "on-surface-variant": "#434654",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "primary-container": "#0052cc",
+                        "inverse-surface": "#253143",
+                        "on-primary-fixed": "#001848",
+                        "on-tertiary-fixed": "#380d00",
+                        "outline-variant": "#c3c6d6",
+                        "on-surface": "#101c2d",
+                        "tertiary-container": "#a33500",
+                        "surface-dim": "#cedbf2",
+                        "surface": "#f9f9ff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "primary-fixed": "#dae2ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#003d9b",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#7b2600",
+                        "surface-container-high": "#dee9ff",
+                        "secondary": "#4e6072",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-background": "#101c2d",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container": "#e7eeff",
+                        "secondary-fixed": "#d1e5fa",
+                        "background": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d1e5fa",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "outline": "#737685",
+                        "on-secondary-fixed": "#091d2d",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "surface-tint": "#0c56d0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "lg": "32px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "xl": "48px",
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface min-h-screen flex items-center justify-center p-sm md:p-lg antialiased">
+<!-- Main Authentication Card -->
+<main class="w-full max-w-[420px] bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="p-lg md:p-xl flex flex-col w-full h-full">
+<!-- Header Section -->
+<header class="flex flex-col items-center mb-lg">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary-fixed flex items-center justify-center font-headline-sm text-headline-sm mb-sm shadow-sm">
+                    TBS
+                </div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface text-center mb-base">
+                    Inventory Management System
+                </h1>
+<h2 class="font-headline-md text-headline-md text-on-surface text-center">
+                    Sign in to your account
+                </h2>
+</header>
+<!-- Error Message Placeholder (Hidden by default, shown here for structural requirement) -->
+<div class="hidden bg-error-container border border-error/20 rounded-DEFAULT p-sm mb-md flex items-start gap-xs" role="alert">
+<span aria-hidden="true" class="material-symbols-outlined text-on-error-container text-[20px]" style="font-variation-settings: 'FILL' 1;">error</span>
+<p class="font-body-md text-body-md text-on-error-container mt-[-2px]">
+                    Invalid email or password. Please try again or contact support if the issue persists.
+                </p>
+</div>
+<!-- Login Form -->
+<form action="#" class="flex flex-col flex-grow w-full" method="POST">
+<div class="space-y-md flex-grow">
+<!-- Email/Username Field -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-xs" for="username">
+                            Email or Username
+                        </label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-sm pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</span>
+<input class="block w-full pl-xl pr-sm py-sm border border-outline-variant rounded-DEFAULT bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors placeholder:text-outline-variant" id="username" name="username" placeholder="admin@tbscampus.edu" required="" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-xs" for="password">
+                            Password
+                        </label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-sm pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</span>
+<input class="block w-full pl-xl pr-xl py-sm border border-outline-variant rounded-DEFAULT bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 flex items-center pr-sm text-outline hover:text-on-surface-variant focus:outline-none transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<div class="flex justify-end mt-xs">
+<a class="font-label-bold text-label-bold text-primary hover:text-on-primary-fixed-variant transition-colors underline-offset-2 hover:underline" href="#">
+                                Forgot password?
+                            </a>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="mt-lg pt-sm">
+<button class="w-full flex justify-center items-center gap-xs py-sm px-md border border-transparent rounded-DEFAULT shadow-sm font-label-bold text-label-bold text-on-primary bg-primary hover:bg-on-primary-fixed-variant focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all active:scale-[0.98]" type="submit">
+<!-- Spinner Icon (Hidden by default, shown during loading state) -->
+<span class="material-symbols-outlined hidden animate-spin text-[20px]">progress_activity</span>
+                        Sign In
+                    </button>
+</div>
+</form>
+<!-- Footer -->
+<footer class="mt-lg pt-md border-t border-outline-variant/30 text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Having trouble? <a class="text-primary hover:underline hover:text-on-primary-fixed-variant transition-colors" href="#">Contact your administrator.</a>
+</p>
+</footer>
+</div>
+</main>
+</body></html>

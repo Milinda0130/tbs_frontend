@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media Equipment Store - Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "on-tertiary-container": "#ffc6b2",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary-fixed": "#d1e5fa",
+                        "on-surface-variant": "#434654",
+                        "surface-variant": "#d7e3fb",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#101c2d",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-primary-container": "#c4d2ff",
+                        "surface-dim": "#cedbf2",
+                        "tertiary": "#7b2600",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b2c5ff",
+                        "tertiary-container": "#a33500",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0c56d0",
+                        "on-primary-fixed": "#001848",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "inverse-on-surface": "#ebf1ff",
+                        "background": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#546678",
+                        "inverse-surface": "#253143",
+                        "secondary": "#4e6072",
+                        "secondary-container": "#d1e5fa",
+                        "outline-variant": "#c3c6d6",
+                        "primary-container": "#0052cc",
+                        "primary": "#003d9b",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dee9ff",
+                        "primary-fixed": "#dae2ff",
+                        "surface-container": "#e7eeff",
+                        "on-background": "#101c2d",
+                        "on-secondary-fixed": "#091d2d",
+                        "outline": "#737685"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex">
+<!-- SideNavBar Component -->
+<nav class="hidden md:flex flex-col h-full py-6 bg-gray-50 dark:bg-slate-950 text-blue-700 dark:text-blue-400 font-public-sans text-sm tracking-tight fixed left-0 top-0 w-64 border-r border-gray-200 dark:border-gray-800 transition-all duration-200 ease-in-out z-40">
+<div class="px-6 mb-8 flex items-center gap-3">
+<img alt="Institutional Logo" class="w-8 h-8 rounded-DEFAULT object-cover" data-alt="minimalist blue and white abstract geometric institutional logo symbol on light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvNfTyQ4koImy979g4H_Mu5-5CpJIsaQBukwhs63h2WFL2jXE-1YM496zzzz1NYKYRc14Dq6TPTT0z6QhewQXxPBuqWAaWDWoOxfXac_31yO6bl7VONw4ISqFxMAQDdCzLg_XYTJCW2P9YBeffmN2jaNBkZPVuvCI94ApDYzkIis1d-o5a7i1cBrzPRy3rYds0mD6s3ICZth7_7Ac9U6MgTFlGzssw-EBuAHyV97fiNaUl-M2kDHTAy5NPpnnYrpwgHyR4rfuqe6E"/>
+<div>
+<h1 class="text-xl font-black text-blue-700 dark:text-blue-500 leading-tight">Media Inventory</h1>
+<p class="text-xs text-on-surface-variant opacity-75">Administrative Portal</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded-lg font-label-md flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Add Asset
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 font-bold border-r-4 border-blue-700 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600">sync_alt</span>
+                Checkouts
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600">build</span>
+                Maintenance
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600">analytics</span>
+                Reports
+            </a>
+</div>
+<div class="mt-auto px-3 pt-6 border-t border-gray-200 dark:border-gray-800 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-900 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-blue-600">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-900 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-blue-600">contact_support</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-h-screen md:ml-64 w-full">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center px-6 h-16 w-full bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 font-public-sans text-sm font-medium border-b border-gray-200 dark:border-gray-800 shadow-sm sticky top-0 z-30">
+<div class="flex items-center gap-4 flex-1">
+<div class="md:hidden text-lg font-bold text-blue-700 dark:text-blue-400 mr-2">Campus Assets</div>
+<!-- Search on left -->
+<div class="hidden md:flex relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow h-9" placeholder="Search globally..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors active:opacity-80 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border border-white"></span>
+</button>
+<button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-1 ml-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors active:opacity-80 flex items-center gap-2">
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="professional headshot of a young man with short brown hair wearing a blue shirt against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUDQ4Dfku0Sw-g7CABXPzhSac_JhMpS7FMGQxLK-69dwM7MyzMxYOgeKFGOSvpPrbQDQOdb930KLBT3vi9OH4KizkUEiIt6_ghxbmUMJ1qW1mnDow4fQn7597Qnx3YJeW3YkloCGdH4WDeIxh73Gc26KcT_gqWelw6Z3qq9A0dR8px33us2gsW9HMGcZTug6849d4yJ_HrqtSnE6yXoIa6u40NUnJpewmKsWIW0u_e_Rfy3-1hopBnQVu1ImW2yHA9MttCPWOTz2U"/>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-6 md:p-8 bg-surface-container-lowest flex justify-center">
+<div class="w-full max-w-container-max flex flex-col gap-sm">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-2">
+<div>
+<h2 class="font-headline-lg text-on-surface text-headline-lg">Media Equipment Store</h2>
+<p class="font-body-md text-on-surface-variant text-body-md mt-1">Non-consumable high-value assets</p>
+</div>
+<button class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary font-label-md text-label-md py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Add Equipment
+                    </button>
+</div>
+<!-- Filter & Action Bar -->
+<div class="bg-surface-bright rounded-xl border border-outline-variant p-4 flex flex-col lg:flex-row gap-4 items-center justify-between shadow-sm">
+<!-- Search -->
+<div class="relative w-full lg:w-1/3">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" placeholder="Search by name, SKU, or serial..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+<div class="flex-1 sm:flex-none relative">
+<label class="sr-only">Category</label>
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-3 pr-10 py-2.5 font-body-md text-body-md text-on-surface focus:border-primary outline-none cursor-pointer">
+<option value="all">Category: All</option>
+<option value="camera">Camera</option>
+<option value="lighting">Lighting</option>
+<option value="audio">Audio</option>
+<option value="av">AV</option>
+<option value="accessories">Accessories</option>
+<option value="other">Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+<div class="flex-1 sm:flex-none relative">
+<label class="sr-only">Condition</label>
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-3 pr-10 py-2.5 font-body-md text-body-md text-on-surface focus:border-primary outline-none cursor-pointer">
+<option value="all">Condition: All</option>
+<option value="good">Good</option>
+<option value="fair">Fair</option>
+<option value="damaged">Damaged</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+<div class="flex-1 sm:flex-none relative">
+<label class="sr-only">Status</label>
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-3 pr-10 py-2.5 font-body-md text-body-md text-on-surface focus:border-primary outline-none cursor-pointer">
+<option value="all">Status: All</option>
+<option value="available">Available</option>
+<option value="borrowed">Currently Borrowed</option>
+<option value="repair">Under Repair</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors flex-shrink-0" title="Clear Filters">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-bright rounded-xl border border-outline-variant shadow-sm overflow-hidden flex-1 flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Item Name</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">SKU</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Category</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Serial Number</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Condition</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Status</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Last Borrowed</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-outline-variant">
+<!-- Row 1 (Available, Good) -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-3 px-4">
+<a class="text-primary font-medium hover:underline flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-outline text-[18px]">photo_camera</span>
+                                            Sony Alpha A7 III
+                                        </a>
+</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">CAM-SON-001</td>
+<td class="py-3 px-4">Camera</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">SN-8823901</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">Good</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">Available</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">Oct 12, 2023</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="View"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Borrow History"><span class="material-symbols-outlined text-[18px]">history</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Borrowed, Good) -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-3 px-4">
+<a class="text-primary font-medium hover:underline flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-outline text-[18px]">mic</span>
+                                            Rode NT1 Condenser Mic
+                                        </a>
+</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">AUD-ROD-012</td>
+<td class="py-3 px-4">Audio</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">SN-4491220</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">Good</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e8f0fe] text-[#1967d2] border border-[#d2e3fc]">Borrowed</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">Oct 24, 2023</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="View"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Borrow History"><span class="material-symbols-outlined text-[18px]">history</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Under Repair, Fair) -->
+<tr class="bg-error-container/30 hover:bg-error-container/50 transition-colors">
+<td class="py-3 px-4">
+<a class="text-primary font-medium hover:underline flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-outline text-[18px]">lightbulb</span>
+                                            Aputure 120d II Kit
+                                        </a>
+</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">LGT-APU-004</td>
+<td class="py-3 px-4">Lighting</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">SN-1109923</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#fef7e0] text-[#b06000] border border-[#fde293]">Fair</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf]">Under Repair</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">Sep 15, 2023</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="View"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Borrow History"><span class="material-symbols-outlined text-[18px]">history</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (Available, Damaged) -->
+<tr class="bg-[#fef7e0]/40 hover:bg-[#fef7e0]/60 transition-colors">
+<td class="py-3 px-4">
+<a class="text-primary font-medium hover:underline flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-outline text-[18px]">camera</span>
+                                            Canon EF 24-70mm f/2.8L
+                                        </a>
+</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">LNS-CAN-008</td>
+<td class="py-3 px-4">Camera</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">SN-9982110</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf]">Damaged</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">Available</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">Oct 01, 2023</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="View"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Borrow History"><span class="material-symbols-outlined text-[18px]">history</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5 (Available, Good) -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-3 px-4">
+<a class="text-primary font-medium hover:underline flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-outline text-[18px]">podium</span>
+                                            Manfrotto Befree Advanced Tripod
+                                        </a>
+</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">ACC-MAN-022</td>
+<td class="py-3 px-4">Accessories</td>
+<td class="py-3 px-4 font-mono text-xs text-on-surface-variant">SN-N/A</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">Good</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">Available</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">Oct 18, 2023</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="View"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low" title="Borrow History"><span class="material-symbols-outlined text-[18px]">history</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="mt-auto border-t border-outline-variant bg-surface-container-lowest px-4 py-3 flex items-center justify-between sm:px-6">
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-on-surface-variant font-body-md">
+                                    Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">5</span> of <span class="font-medium text-on-surface">42</span> results
+                                </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-outline-variant bg-white text-sm font-medium text-on-surface-variant hover:bg-surface-container-low" href="#">
+<span class="sr-only">Previous</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</a>
+<a aria-current="page" class="z-10 bg-primary-fixed border-primary text-primary-container relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">1</a>
+<a class="bg-white border-outline-variant text-on-surface-variant hover:bg-surface-container-low relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">2</a>
+<a class="bg-white border-outline-variant text-on-surface-variant hover:bg-surface-container-low relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">3</a>
+<span class="relative inline-flex items-center px-4 py-2 border border-outline-variant bg-white text-sm font-medium text-on-surface-variant">...</span>
+<a class="bg-white border-outline-variant text-on-surface-variant hover:bg-surface-container-low relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">9</a>
+<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-outline-variant bg-white text-sm font-medium text-on-surface-variant hover:bg-surface-container-low" href="#">
+<span class="sr-only">Next</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

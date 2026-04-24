@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Marcus Thorne - User Profile - Campus Inventory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dae2ff",
+                        "on-background": "#101c2d",
+                        "surface-dim": "#cedbf2",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d7e3fb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-tint": "#0c56d0",
+                        "secondary": "#4e6072",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e7eeff",
+                        "primary-container": "#0052cc",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#253143",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-secondary": "#ffffff",
+                        "primary": "#003d9b",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-primary-container": "#c4d2ff",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee9ff",
+                        "on-surface-variant": "#434654",
+                        "secondary-fixed": "#d1e5fa",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#7b2600",
+                        "tertiary-container": "#a33500",
+                        "surface-container-low": "#f0f3ff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-surface": "#101c2d",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d1e5fa",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "outline": "#737685",
+                        "on-secondary-fixed": "#091d2d",
+                        "on-secondary-container": "#546678",
+                        "on-primary-fixed": "#001848"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "48px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "lg": "32px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "xs": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 font-['Public_Sans'] text-sm tracking-tight h-screen w-64 border-r border-r border-gray-200 dark:border-gray-800 flat no shadows flex flex-col h-full fixed left-0 top-0 pt-16 z-40 hidden md:flex">
+<div class="px-6 pb-6">
+<h2 class="text-base font-bold text-slate-900 dark:text-slate-100">Admin Portal</h2>
+<p class="text-xs text-gray-500">Department Head</p>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-1 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                        Inventory
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 font-bold border-r-4 border-blue-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                        Users
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+                        Locations
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                        Reports
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                        System Logs
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto px-3 pb-6">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                        Sign Out
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 w-full">
+<!-- TopNavBar -->
+<header class="bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 font-['Public_Sans'] text-sm antialiased docked full-width top-0 border-b border-b border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-none flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-gray-600">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-lg font-bold text-blue-700 dark:text-blue-400">Campus Inventory</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 rounded-full border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm w-64 bg-gray-50" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-gray-600 hover:bg-gray-50 rounded-full transition-colors active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-gray-600 hover:bg-gray-50 rounded-full transition-colors active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold ml-2">
+<img alt="User profile" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgNYyz5qJ5NQJhRc7kJVuVELEXvg9ej9B3iS97Bactd6LEkfA41f-7dMz9o6sSYv9XYfxyb7Nh0CbJD2wOu8FxGUNuBTUng8eE_KD0FKNvUqCuiGtojeJRUX4SzlpKJuX5Ri7LoYLbNLXxO_i2ESzSnBsCWWSvG1lW_DYGAV1d-x0a3zh4raig950-o3_G0WhcAJvCjNktoahOpB_Jw1NoEc7ZkdmXd-v3r-Nmz9kApBPL2u7dtKONTk010nl6P5LTQxTUbbJDOG8"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-gutter bg-surface-container-low overflow-y-auto">
+<div class="max-w-[container-max] mx-auto">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm text-secondary mb-lg">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Users</a>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<span class="text-on-surface font-semibold">Marcus Thorne</span>
+</nav>
+<!-- Profile Header -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg mb-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-md shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-lg">
+<div class="w-24 h-24 rounded-full bg-purple-600 text-white flex items-center justify-center text-3xl font-bold">
+                            MT
+                        </div>
+<div>
+<h1 class="font-headline-lg text-on-surface mb-2">Marcus Thorne</h1>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-label-bold uppercase tracking-wider">Dept Admin</span>
+<span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-label-bold uppercase tracking-wider">Computing</span>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-label-bold uppercase tracking-wider">Active</span>
+</div>
+</div>
+</div>
+<div class="flex gap-sm w-full md:w-auto mt-4 md:mt-0">
+<button class="flex-1 md:flex-none px-4 py-2 border border-outline text-on-surface rounded-lg font-label-md hover:bg-surface-container transition-colors">
+                            Edit User
+                        </button>
+<button class="flex-1 md:flex-none px-4 py-2 bg-error text-on-error rounded-lg font-label-md hover:bg-red-800 transition-colors">
+                            Deactivate
+                        </button>
+</div>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column: Account Details -->
+<div class="lg:col-span-1">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-[0_2px_4px_rgba(0,0,0,0.05)] h-full">
+<h2 class="font-headline-sm text-on-surface mb-md pb-xs border-b border-outline-variant">Account Details</h2>
+<dl class="space-y-sm">
+<div>
+<dt class="font-label-bold text-secondary uppercase mb-1">Email</dt>
+<dd class="font-body-md text-on-surface">m.thorne@tbscampus.edu</dd>
+</div>
+<div>
+<dt class="font-label-bold text-secondary uppercase mb-1">Role</dt>
+<dd class="font-body-md text-on-surface">Dept Admin</dd>
+</div>
+<div>
+<dt class="font-label-bold text-secondary uppercase mb-1">Department</dt>
+<dd class="font-body-md text-on-surface">Computing</dd>
+</div>
+<div>
+<dt class="font-label-bold text-secondary uppercase mb-1">Member Since</dt>
+<dd class="font-body-md text-on-surface">Oct 12, 2023</dd>
+</div>
+<div>
+<dt class="font-label-bold text-secondary uppercase mb-1">Last Login</dt>
+<dd class="font-body-md text-on-surface">2 hours ago</dd>
+</div>
+<div>
+<dt class="font-label-bold text-secondary uppercase mb-1">Status</dt>
+<dd class="font-body-md text-on-surface flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div> Active
+                                    </dd>
+</div>
+</dl>
+</div>
+</div>
+<!-- Right Column: Recent Activity -->
+<div class="lg:col-span-2">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_2px_4px_rgba(0,0,0,0.05)] flex flex-col h-full">
+<div class="p-md border-b border-outline-variant">
+<h2 class="font-headline-sm text-on-surface">Recent Activity</h2>
+</div>
+<div class="flex-1 p-0">
+<ul class="divide-y divide-outline-variant">
+<li class="p-md hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface"><span class="font-semibold">Updated asset status</span> for MacBook Pro 14" (INV-2024-001)</p>
+<div class="flex items-center gap-2 mt-1 font-label-md text-secondary">
+<span>Inventory</span>
+<span>•</span>
+<span>10 mins ago</span>
+</div>
+</div>
+</li>
+<li class="p-md hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">devices</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface"><span class="font-semibold">Checked out equipment</span>: Sony A7III Camera Kit</p>
+<div class="flex items-center gap-2 mt-1 font-label-md text-secondary">
+<span>Checkout</span>
+<span>•</span>
+<span>2 hours ago</span>
+</div>
+</div>
+</li>
+<li class="p-md hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">manage_accounts</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface"><span class="font-semibold">Modified user permissions</span> for Sarah Jenkins</p>
+<div class="flex items-center gap-2 mt-1 font-label-md text-secondary">
+<span>Users</span>
+<span>•</span>
+<span>Yesterday, 4:30 PM</span>
+</div>
+</div>
+</li>
+<li class="p-md hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">login</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface"><span class="font-semibold">System Login</span> from IP 192.168.1.45</p>
+<div class="flex items-center gap-2 mt-1 font-label-md text-secondary">
+<span>System</span>
+<span>•</span>
+<span>Yesterday, 9:00 AM</span>
+</div>
+</div>
+</li>
+<li class="p-md hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">build</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface"><span class="font-semibold">Requested maintenance</span> for Epson Projector Room 302</p>
+<div class="flex items-center gap-2 mt-1 font-label-md text-secondary">
+<span>Maintenance</span>
+<span>•</span>
+<span>Oct 24, 2023</span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="p-md border-t border-outline-variant bg-surface-container-lowest mt-auto rounded-b-xl text-center">
+<a class="font-label-md text-primary hover:text-blue-800 transition-colors inline-flex items-center gap-1" href="#">
+                                    View Full Activity Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

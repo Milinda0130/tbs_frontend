@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#d7e3fb",
+                      "surface": "#f9f9ff",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#b6c8dd",
+                      "on-tertiary-container": "#ffc6b2",
+                      "surface-bright": "#f9f9ff",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "on-tertiary-fixed-variant": "#812800",
+                      "on-primary-container": "#c4d2ff",
+                      "tertiary-fixed": "#ffdbcf",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb59b",
+                      "secondary-container": "#d1e5fa",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#d7e3fb",
+                      "surface-container-high": "#dee9ff",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#0c56d0",
+                      "on-surface-variant": "#434654",
+                      "on-secondary-fixed-variant": "#37495a",
+                      "surface-dim": "#cedbf2",
+                      "secondary-fixed": "#d1e5fa",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#003d9b",
+                      "inverse-primary": "#b2c5ff",
+                      "on-secondary-container": "#546678",
+                      "primary-container": "#0052cc",
+                      "tertiary": "#7b2600",
+                      "tertiary-container": "#a33500",
+                      "inverse-surface": "#253143",
+                      "outline-variant": "#c3c6d6",
+                      "on-tertiary-fixed": "#380d00",
+                      "on-background": "#101c2d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#dae2ff",
+                      "on-primary": "#ffffff",
+                      "outline": "#737685",
+                      "secondary": "#4e6072",
+                      "on-primary-fixed": "#001848",
+                      "on-primary-fixed-variant": "#0040a2",
+                      "on-surface": "#101c2d",
+                      "background": "#f9f9ff",
+                      "surface-container-low": "#f0f3ff",
+                      "surface-container": "#e7eeff",
+                      "on-secondary-fixed": "#091d2d",
+                      "inverse-on-surface": "#ebf1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xs": "8px",
+                      "md": "24px",
+                      "container-max": "1440px",
+                      "lg": "32px",
+                      "xl": "48px",
+                      "sm": "16px",
+                      "gutter": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Public Sans"],
+                      "body-md": ["Public Sans"],
+                      "body-lg": ["Public Sans"],
+                      "headline-lg": ["Public Sans"],
+                      "label-md": ["Public Sans"],
+                      "label-bold": ["Public Sans"],
+                      "headline-sm": ["Public Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-500 font-public-sans text-sm tracking-wide docked h-screen w-64 left-0 border-r border-slate-200 dark:border-slate-800 flat no shadows fixed flex-col p-4 gap-2 overflow-y-auto z-50">
+<div class="flex items-center gap-sm mb-lg px-xs">
+<img alt="TBS Logo" class="w-10 h-10 rounded-DEFAULT" data-alt="Minimalist abstract blue corporate logo mark on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGJNEBs4z62HnLMsm6CP_FlMnqhdKxTuhaKE23UNDYyFCbwPbQLJVhzi0xF2dZzBn1FUiFWMnTEW0L10dh_nnvIEJBr4h86vyfsjgyBrxu9HrnGWGvth2fGV3hKxbqMiL9uocskQIVzzOuznRw9nnbVmWQE5xwz24KvBnwHkqGkMyiUlKSTGQP1mgjz5qq5dY-SbyytyqxqtszF6LYwuMrVI0drDwItcjEQDVmeXbrsGA-0YjmQ6jyVZj-d2OJPSHu50wccPDdpd4"/>
+<div>
+<h1 class="text-lg font-extrabold text-slate-900 dark:text-white leading-tight">TBS IMS</h1>
+<p class="text-xs text-slate-500">Campus Management</p>
+</div>
+</div>
+<ul class="flex flex-col gap-1 w-full">
+<li>
+<a class="flex items-center gap-sm px-md py-xs bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 font-semibold rounded-md border-l-4 border-blue-700 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full" href="#">
+<span class="material-symbols-outlined fill text-[20px]" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+                    Inventory
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="handshake">handshake</span>
+                    Borrowing
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="outbound">outbound</span>
+                    Issuing
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+                    Suppliers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="science">science</span>
+                    Practical Sessions
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="videocam">videocam</span>
+                    Media Equipment
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete_outline">delete_outline</span>
+                    Waste &amp; Damage
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="assessment">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history_edu">history_edu</span>
+                    Audit Logs
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors scale-100 active:scale-[0.98] duration-150 w-full rounded-md border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+                    Users
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-w-0 bg-background">
+<!-- TopNavBar -->
+<header class="bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-500 font-public-sans antialiased text-sm docked full-width top-0 z-40 h-16 border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center w-full px-8 sticky top-0">
+<div class="flex items-center gap-md">
+<span class="text-xl font-black tracking-tight text-blue-700 dark:text-blue-500 hidden md:block">TBS Campus IMS</span>
+<button class="md:hidden text-slate-600 hover:text-blue-600 transition-all p-xs">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex-1 max-w-md ml-lg hidden sm:block">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-sm text-slate-400 text-[20px]">search</span>
+<input class="w-full pl-xl pr-sm py-2 bg-slate-50 border border-slate-200 rounded-DEFAULT text-slate-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm font-body-md placeholder:text-slate-400" placeholder="Search by SKU, Building, or Category" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-sm ml-auto">
+<button class="relative p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 transition-all rounded-full active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[24px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-error rounded-full border-2 border-white"></span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2 hidden sm:block"></div>
+<button class="flex items-center gap-2 hover:bg-slate-50 p-1 pr-3 rounded-full transition-colors border border-transparent hover:border-slate-200">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-slate-200" data-alt="Headshot of professional man in light blue shirt smiling slightly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdhBfMtlosEFmBDaMfoPbcLtVcnloZq6XlnkaHNSIWVSObsz0Lpm7kykDZiQK22vS-jNDOvJZXUUlj23bwZjb7L-zbMqn5w4yiZuM2Gw01jppDr_z5ZLECQB_JhEXoWck0vN3xIGFicljrFREUpZex6VJwn78vKrQtg1GvqAyXOZax5jH0fOsDaZ1jueEkhblOBfdil7q50nK5E5El_Z3S8RsFy8u8FrgYzb-_VW82WNe-4HMV3N7nk5pRjtjry2bmDDphXhcOuZg"/>
+<div class="hidden sm:flex flex-col items-start">
+<span class="font-label-md text-slate-900 leading-tight">Admin User</span>
+<span class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Super Admin</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px] hidden sm:block">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 p-md md:p-gutter max-w-container-max mx-auto w-full overflow-y-auto">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-lg gap-sm">
+<div>
+<h2 class="font-headline-lg text-on-background">Dashboard Overview</h2>
+<p class="font-body-md text-secondary">Campus-wide inventory status and recent activities.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-md px-md py-2 rounded-DEFAULT hover:bg-primary-container transition-colors shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Quick Action
+                </button>
+</div>
+<!-- Metrics Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory</span>
+</div>
+</div>
+<div>
+<p class="font-label-bold text-secondary uppercase tracking-wider">Total Items</p>
+<h3 class="font-headline-lg text-on-surface mt-1">12,450</h3>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">warning</span>
+</div>
+</div>
+<div>
+<p class="font-label-bold text-secondary uppercase tracking-wider">Low Stock Items</p>
+<h3 class="font-headline-lg text-on-surface mt-1">84</h3>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+</div>
+<div>
+<p class="font-label-bold text-secondary uppercase tracking-wider">Total Stores</p>
+<h3 class="font-headline-lg text-on-surface mt-1">14</h3>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+</div>
+<div>
+<p class="font-label-bold text-secondary uppercase tracking-wider">Pending Approvals</p>
+<h3 class="font-headline-lg text-on-surface mt-1">27</h3>
+</div>
+</div>
+</div>
+<h3 class="font-headline-sm text-on-surface mb-md">Store Locations Overview</h3>
+<!-- Store Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-md mb-xl">
+<!-- Store 1 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col">
+<h4 class="font-headline-sm text-on-surface mb-1">Main Store</h4>
+<p class="font-body-md text-secondary mb-md">Central Logistics</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant">
+<div>
+<p class="font-label-md text-secondary mb-1">Items: <span class="text-on-surface font-semibold">8,200</span></p>
+<p class="font-label-md text-error">Low Stock: 42</p>
+</div>
+<button class="text-primary font-label-md hover:underline bg-transparent border-0 p-0">View Store</button>
+</div>
+</div>
+<!-- Store 2 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col">
+<h4 class="font-headline-sm text-on-surface mb-1">Nursing Stock</h4>
+<p class="font-body-md text-secondary mb-md">Health Sciences Dept</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant">
+<div>
+<p class="font-label-md text-secondary mb-1">Items: <span class="text-on-surface font-semibold">1,450</span></p>
+<p class="font-label-md text-error">Low Stock: 18</p>
+</div>
+<button class="text-primary font-label-md hover:underline bg-transparent border-0 p-0">View Store</button>
+</div>
+</div>
+<!-- Store 3 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col">
+<h4 class="font-headline-sm text-on-surface mb-1">Hospitality Stock</h4>
+<p class="font-body-md text-secondary mb-md">Culinary Arts Dept</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant">
+<div>
+<p class="font-label-md text-secondary mb-1">Items: <span class="text-on-surface font-semibold">2,100</span></p>
+<p class="font-label-md text-error">Low Stock: 15</p>
+</div>
+<button class="text-primary font-label-md hover:underline bg-transparent border-0 p-0">View Store</button>
+</div>
+</div>
+<!-- Store 4 -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant p-md shadow-sm flex flex-col">
+<h4 class="font-headline-sm text-on-surface mb-1">Media Equipment</h4>
+<p class="font-body-md text-secondary mb-md">Communications Dept</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant">
+<div>
+<p class="font-label-md text-secondary mb-1">Items: <span class="text-on-surface font-semibold">700</span></p>
+<p class="font-label-md text-error">Low Stock: 9</p>
+</div>
+<button class="text-primary font-label-md hover:underline bg-transparent border-0 p-0">View Store</button>
+</div>
+</div>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md mb-xl">
+<!-- Left Column: Low Stock Alerts -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-DEFAULT border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="px-md py-sm border-b border-surface-variant bg-surface flex justify-between items-center">
+<h3 class="font-headline-sm text-on-surface">Low Stock Alerts</h3>
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-bold text-secondary uppercase tracking-wider text-[11px] border-b border-surface-variant">
+<th class="px-md py-sm">Item</th>
+<th class="px-md py-sm">Store</th>
+<th class="px-md py-sm text-right">Current Qty</th>
+<th class="px-md py-sm text-right">Min Qty</th>
+<th class="px-md py-sm text-center">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface divide-y divide-surface-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-sm font-semibold">Exam Booklets (A4)</td>
+<td class="px-md py-sm text-secondary">Main Store</td>
+<td class="px-md py-sm text-right text-error font-semibold">500</td>
+<td class="px-md py-sm text-right text-secondary">1000</td>
+<td class="px-md py-sm text-center">
+<button class="text-primary font-label-md border border-primary px-2 py-1 rounded-DEFAULT hover:bg-primary hover:text-white transition-colors">Stock In</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-sm font-semibold">Latex Gloves (M)</td>
+<td class="px-md py-sm text-secondary">Nursing Stock</td>
+<td class="px-md py-sm text-right text-error font-semibold">2</td>
+<td class="px-md py-sm text-right text-secondary">10</td>
+<td class="px-md py-sm text-center">
+<button class="text-primary font-label-md border border-primary px-2 py-1 rounded-DEFAULT hover:bg-primary hover:text-white transition-colors">Stock In</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-sm font-semibold">DSLR Cameras (Nikon)</td>
+<td class="px-md py-sm text-secondary">Media Equip</td>
+<td class="px-md py-sm text-right text-error font-semibold">1</td>
+<td class="px-md py-sm text-right text-secondary">3</td>
+<td class="px-md py-sm text-center">
+<button class="text-primary font-label-md border border-primary px-2 py-1 rounded-DEFAULT hover:bg-primary hover:text-white transition-colors">Stock In</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column: Pending Approvals -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="px-md py-sm border-b border-surface-variant bg-surface flex justify-between items-center">
+<h3 class="font-headline-sm text-on-surface">Pending Approvals</h3>
+<span class="bg-tertiary-fixed text-tertiary font-label-bold px-2 py-0.5 rounded-full text-[10px]">27</span>
+</div>
+<ul class="divide-y divide-surface-variant overflow-y-auto max-h-[300px]">
+<li class="px-md py-sm hover:bg-surface-container-low transition-colors flex justify-between items-center">
+<div>
+<p class="font-label-md text-on-surface">Science Dept</p>
+<p class="font-body-md text-secondary text-[12px]">Request: 15 items</p>
+<p class="font-body-md text-outline text-[11px] mt-1">2 hours ago</p>
+</div>
+<a class="text-primary font-label-md hover:underline" href="#">Review</a>
+</li>
+<li class="px-md py-sm hover:bg-surface-container-low transition-colors flex justify-between items-center">
+<div>
+<p class="font-label-md text-on-surface">IT Services</p>
+<p class="font-body-md text-secondary text-[12px]">Request: 3 items</p>
+<p class="font-body-md text-outline text-[11px] mt-1">4 hours ago</p>
+</div>
+<a class="text-primary font-label-md hover:underline" href="#">Review</a>
+</li>
+<li class="px-md py-sm hover:bg-surface-container-low transition-colors flex justify-between items-center">
+<div>
+<p class="font-label-md text-on-surface">Library</p>
+<p class="font-body-md text-secondary text-[12px]">Request: 50 items</p>
+<p class="font-body-md text-outline text-[11px] mt-1">1 day ago</p>
+</div>
+<a class="text-primary font-label-md hover:underline" href="#">Review</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Recent Stock Movements -->
+<div class="bg-surface-container-lowest rounded-DEFAULT border border-outline-variant shadow-sm overflow-hidden flex flex-col mb-xl">
+<div class="px-md py-sm border-b border-surface-variant bg-surface flex justify-between items-center">
+<h3 class="font-headline-sm text-on-surface">Recent Stock Movements</h3>
+<button class="text-primary font-label-md hover:underline bg-transparent border-0 p-0">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-bold text-secondary uppercase tracking-wider text-[11px] border-b border-surface-variant">
+<th class="px-md py-sm">Item</th>
+<th class="px-md py-sm">Store</th>
+<th class="px-md py-sm">Type</th>
+<th class="px-md py-sm text-right">Qty</th>
+<th class="px-md py-sm">User</th>
+<th class="px-md py-sm text-right">Timestamp</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface divide-y divide-surface-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-sm font-medium">Printer Paper A4</td>
+<td class="px-md py-sm text-secondary">Main Store</td>
+<td class="px-md py-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-label-bold bg-green-100 text-green-800 border border-green-200">Stock In</span>
+</td>
+<td class="px-md py-sm text-right font-medium">+200</td>
+<td class="px-md py-sm text-secondary text-sm">J. Smith</td>
+<td class="px-md py-sm text-right text-outline text-sm">10:45 AM, Today</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-sm font-medium">Microscopes</td>
+<td class="px-md py-sm text-secondary">Science Lab</td>
+<td class="px-md py-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-label-bold bg-blue-100 text-blue-800 border border-blue-200">Transfer</span>
+</td>
+<td class="px-md py-sm text-right font-medium">5</td>
+<td class="px-md py-sm text-secondary text-sm">A. Davis</td>
+<td class="px-md py-sm text-right text-outline text-sm">09:15 AM, Today</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-sm font-medium">Chef Uniforms (M)</td>
+<td class="px-md py-sm text-secondary">Hospitality Stock</td>
+<td class="px-md py-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-label-bold bg-error-container text-error border border-error/20">Stock Out</span>
+</td>
+<td class="px-md py-sm text-right font-medium">-12</td>
+<td class="px-md py-sm text-secondary text-sm">M. Lee</td>
+<td class="px-md py-sm text-right text-outline text-sm">Yesterday</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

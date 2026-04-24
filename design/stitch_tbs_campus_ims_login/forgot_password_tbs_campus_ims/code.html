@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forgot Password - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#253143",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#091d2d",
+                        "on-primary-fixed": "#001848",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "outline": "#737685",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "on-error": "#ffffff",
+                        "secondary": "#4e6072",
+                        "surface-variant": "#d7e3fb",
+                        "surface-dim": "#cedbf2",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#e7eeff",
+                        "primary-container": "#0052cc",
+                        "background": "#f9f9ff",
+                        "secondary-fixed": "#d1e5fa",
+                        "primary-fixed": "#dae2ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#7b2600",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "inverse-primary": "#b2c5ff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary": "#003d9b",
+                        "outline-variant": "#c3c6d6",
+                        "on-surface-variant": "#434654",
+                        "on-background": "#101c2d",
+                        "tertiary-container": "#a33500",
+                        "surface": "#f9f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0c56d0",
+                        "on-primary-container": "#c4d2ff",
+                        "surface-container-high": "#dee9ff",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#546678",
+                        "secondary-container": "#d1e5fa",
+                        "on-surface": "#101c2d",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "container-max": "1440px",
+                        "sm": "16px",
+                        "lg": "32px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "label-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center p-4 antialiased">
+<!-- Main Authentication Container -->
+<div class="w-full max-w-[420px] flex flex-col gap-md">
+<!-- Branding Area -->
+<div class="flex flex-col items-center justify-center gap-xs mb-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1; font-size: 32px;">inventory_2</span>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">TBS Campus IMS</h1>
+</div>
+</div>
+<!-- Auth Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-[0px_2px_4px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col gap-sm mb-md text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Forgot your password?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">
+                    Enter your email and we will send you a reset link.
+                </p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-md" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]" data-icon="mail">mail</span>
+<input class="w-full pl-10 pr-4 py-[10px] bg-surface-container-lowest border border-outline-variant rounded-DEFAULT font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="email" placeholder="name@tbs-campus.edu" required="" type="email"/>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-on-primary-fixed-variant text-on-primary font-label-md text-label-md py-3 rounded-DEFAULT transition-colors flex items-center justify-center gap-2 mt-xs" type="submit">
+                    Send Reset Link
+                    <span class="material-symbols-outlined text-[18px]" data-icon="arrow_right_alt">arrow_right_alt</span>
+</button>
+</form>
+</div>
+<!-- Footer Link -->
+<div class="text-center mt-sm">
+<a class="inline-flex items-center gap-xs font-body-md text-body-md text-primary hover:text-on-primary-fixed-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+                Back to Login
+            </a>
+</div>
+</div>
+</body></html>

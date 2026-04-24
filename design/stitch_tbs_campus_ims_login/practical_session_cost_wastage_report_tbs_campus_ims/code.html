@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Practical Session Cost &amp; Wastage Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#0040a2",
+                        "surface-bright": "#f9f9ff",
+                        "on-surface-variant": "#434654",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-secondary-container": "#546678",
+                        "on-background": "#101c2d",
+                        "inverse-primary": "#b2c5ff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#253143",
+                        "inverse-on-surface": "#ebf1ff",
+                        "tertiary-container": "#a33500",
+                        "primary-container": "#0052cc",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0c56d0",
+                        "primary-fixed": "#dae2ff",
+                        "outline-variant": "#c3c6d6",
+                        "surface": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "surface-dim": "#cedbf2",
+                        "tertiary-fixed": "#ffdbcf",
+                        "primary": "#003d9b",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#091d2d",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-primary-fixed": "#001848",
+                        "outline": "#737685",
+                        "surface-container-high": "#dee9ff",
+                        "secondary": "#4e6072",
+                        "on-tertiary-container": "#ffc6b2",
+                        "secondary-fixed": "#d1e5fa",
+                        "surface-variant": "#d7e3fb",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#c4d2ff",
+                        "tertiary": "#7b2600",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e7eeff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "on-surface": "#101c2d",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary-container": "#d1e5fa",
+                        "on-tertiary-fixed-variant": "#812800"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "lg": "32px",
+                        "xl": "48px",
+                        "sm": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: white !important;
+            }
+            .print-canvas {
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: 1px solid #E1E4E8 !important;
+            }
+            .print-bg-white {
+                background-color: white !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="no-print bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 w-64 h-full flex flex-col z-40 flex-shrink-0 transition-all duration-150 ease-in-out">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold">C</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-blue-700 dark:text-blue-400">Department Head</h1>
+<p class="font-label-md text-label-md text-slate-600 dark:text-slate-400">Administrative Unit</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                        Overview
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+                        Inventory
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-r-4 border-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+                        Session Reports
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">warehouse</span>
+                        Resource Allocation
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full flex justify-center items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-DEFAULT font-label-bold text-label-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">download</span>
+                Export Report
+            </button>
+</div>
+<div class="p-3 border-t border-slate-200 dark:border-slate-800">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+                        Help Center
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT font-body-md text-body-md text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+                        Logout
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- TopAppBar -->
+<header class="no-print bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center w-full px-6 py-3 sticky top-0 z-50 flex-shrink-0 transition-all duration-200">
+<div class="flex items-center gap-4">
+<span class="font-headline-sm text-headline-sm text-blue-700 dark:text-blue-400 font-bold tracking-tight">Campus Logistics</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="pl-10 pr-4 py-2 border border-outline-variant rounded-DEFAULT font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-64" placeholder="Search..." type="text"/>
+</div>
+<button class="text-slate-600 dark:text-slate-400 hover:text-blue-700 hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">print</span>
+</button>
+<button class="text-slate-600 dark:text-slate-400 hover:text-blue-700 hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">share</span>
+</button>
+<button class="text-slate-600 dark:text-slate-400 hover:text-blue-700 hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="professional portrait of an administrator in formal attire with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAakodVDmIExkKX8dy--ApzyHzExQgARThp3QKEY4RBbBcyHCUDu3jamyJBMac5QD9TLTqWpbixeuhxNaSmQtjk4YaKnGD8L8Xjag3VeNr2cPbVCgw562bi-4DE-KiLK-2bbUEv1escEOzqasMDQEjKSxtZ_usKNc57p2yJXZq02L5qdkaYy4xmewnlZLl4e5O4des9yGQ5DiwrJJKgjMj8qBR30wJ9KSkv0rau8N-25d8r1TW3bGOLo5DpCbQBiIFHdeL__tnH8xY"/>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto p-gutter print-canvas bg-surface-container-low print-bg-white">
+<div class="max-w-container-max mx-auto w-full flex flex-col gap-lg">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 no-print">
+<div>
+<nav class="flex items-center gap-2 font-label-md text-label-md text-secondary mb-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Practical Sessions</a>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Advanced Pastry Techniques</a>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+<span class="text-on-surface font-semibold">Report</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Practical Session Cost &amp; Wastage Report</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-DEFAULT font-label-bold text-label-bold text-on-surface hover:bg-surface-variant transition-colors" onclick="window.print()">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">print</span>
+                            Print
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-DEFAULT font-label-bold text-label-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">picture_as_pdf</span>
+                            Export PDF
+                        </button>
+</div>
+</div>
+<!-- Print Title (Only visible when printing) -->
+<div class="hidden print:block mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface border-b border-outline-variant pb-xs mb-xs">Practical Session Cost &amp; Wastage Report</h1>
+<p class="font-body-md text-body-md text-secondary">Generated on: Oct 25, 2023</p>
+</div>
+<!-- Summary Card & Cost Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<!-- Session Summary -->
+<div class="lg:col-span-1 bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm print-shadow-none flex flex-col gap-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-xs">Session Details</h3>
+<div class="grid grid-cols-2 gap-y-sm gap-x-4">
+<div>
+<span class="font-label-md text-label-md text-secondary block">Session</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Advanced Pastry Techniques</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary block">Date</span>
+<span class="font-body-md text-body-md text-on-surface">Oct 24, 2023</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary block">Conducted By</span>
+<span class="font-body-md text-body-md text-on-surface">Chef Julianne</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary block">Students</span>
+<span class="font-body-md text-body-md text-on-surface">24</span>
+</div>
+<div class="col-span-2">
+<span class="font-label-md text-label-md text-secondary block">Status</span>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-bold text-label-bold mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
+                                    Completed
+                                </span>
+</div>
+</div>
+</div>
+<!-- Cost Summary Grid -->
+<div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-md">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm print-shadow-none flex flex-col justify-center">
+<span class="font-label-md text-label-md text-secondary mb-1">Total Allocated Cost</span>
+<span class="font-headline-md text-headline-md text-on-surface">4,450.00</span>
+<span class="font-body-md text-body-md text-secondary text-xs">LKR</span>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm print-shadow-none flex flex-col justify-center">
+<span class="font-label-md text-label-md text-secondary mb-1">Total Actual Cost</span>
+<span class="font-headline-md text-headline-md text-on-surface">4,365.00</span>
+<span class="font-body-md text-body-md text-secondary text-xs">LKR</span>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-error-container bg-error-container/10 p-md shadow-sm print-shadow-none flex flex-col justify-center">
+<span class="font-label-md text-label-md text-error mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                                Total Wastage Cost
+                            </span>
+<span class="font-headline-md text-headline-md text-error">85.00</span>
+<span class="font-body-md text-body-md text-error text-xs">LKR</span>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm print-shadow-none flex flex-col justify-center">
+<span class="font-label-md text-label-md text-secondary mb-1">Cost per Student</span>
+<span class="font-headline-md text-headline-md text-on-surface">181.88</span>
+<span class="font-body-md text-body-md text-secondary text-xs">LKR</span>
+</div>
+</div>
+</div>
+<!-- Main Content Row -->
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-md">
+<!-- Table Section -->
+<div class="xl:col-span-3 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm print-shadow-none overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Ingredient Breakdown</h3>
+<button class="no-print p-1 hover:bg-surface-variant rounded-DEFAULT text-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-highest">
+<tr>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant whitespace-nowrap">Ingredient</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Allocated Qty</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Actual Used</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Wastage Qty</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-center">Unit</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Unit Cost (LKR)</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Allocated Cost</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Actual Cost</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface border-b border-outline-variant text-right">Wastage Cost</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="bg-tertiary-fixed/30 hover:bg-tertiary-fixed/50 transition-colors border-b border-outline-variant">
+<td class="py-3 px-4 text-on-surface font-medium">All-Purpose Flour</td>
+<td class="py-3 px-4 text-right">5.0</td>
+<td class="py-3 px-4 text-right">4.8</td>
+<td class="py-3 px-4 text-right font-semibold text-tertiary">0.2</td>
+<td class="py-3 px-4 text-center text-secondary">kg</td>
+<td class="py-3 px-4 text-right text-secondary">200</td>
+<td class="py-3 px-4 text-right">1000</td>
+<td class="py-3 px-4 text-right">960</td>
+<td class="py-3 px-4 text-right font-semibold text-tertiary">40</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors border-b border-outline-variant">
+<td class="py-3 px-4 text-on-surface font-medium">Dark Chocolate (70%)</td>
+<td class="py-3 px-4 text-right">2.5</td>
+<td class="py-3 px-4 text-right">2.5</td>
+<td class="py-3 px-4 text-right">0.0</td>
+<td class="py-3 px-4 text-center text-secondary">kg</td>
+<td class="py-3 px-4 text-right text-secondary">1200</td>
+<td class="py-3 px-4 text-right">3000</td>
+<td class="py-3 px-4 text-right">3000</td>
+<td class="py-3 px-4 text-right">0</td>
+</tr>
+<tr class="bg-tertiary-fixed/30 hover:bg-tertiary-fixed/50 transition-colors border-b border-outline-variant">
+<td class="py-3 px-4 text-on-surface font-medium">Granulated Sugar</td>
+<td class="py-3 px-4 text-right">3.0</td>
+<td class="py-3 px-4 text-right">2.7</td>
+<td class="py-3 px-4 text-right font-semibold text-tertiary">0.3</td>
+<td class="py-3 px-4 text-center text-secondary">kg</td>
+<td class="py-3 px-4 text-right text-secondary">150</td>
+<td class="py-3 px-4 text-right">450</td>
+<td class="py-3 px-4 text-right">405</td>
+<td class="py-3 px-4 text-right font-semibold text-tertiary">45</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-bright font-label-bold text-label-bold text-on-surface border-t-2 border-outline">
+<tr>
+<td class="py-3 px-4">Totals</td>
+<td class="py-3 px-4 text-right">-</td>
+<td class="py-3 px-4 text-right">-</td>
+<td class="py-3 px-4 text-right">-</td>
+<td class="py-3 px-4 text-center">-</td>
+<td class="py-3 px-4 text-right">-</td>
+<td class="py-3 px-4 text-right">4450</td>
+<td class="py-3 px-4 text-right">4365</td>
+<td class="py-3 px-4 text-right text-error">85</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Wastage Chart Section -->
+<div class="xl:col-span-1 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm print-shadow-none p-md flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm flex items-center gap-2 border-b border-outline-variant pb-xs">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+                            Wastage Summary
+                        </h3>
+<p class="font-body-md text-body-md text-secondary mb-4">Top wasted ingredients by quantity.</p>
+<div class="flex flex-col gap-4 flex-1 justify-center">
+<!-- Bar 1 -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-bold text-label-bold text-on-surface">Granulated Sugar</span>
+<span class="font-label-md text-label-md text-tertiary">0.3 kg</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2.5">
+<div class="bg-tertiary h-2.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Bar 2 -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-bold text-label-bold text-on-surface">All-Purpose Flour</span>
+<span class="font-label-md text-label-md text-tertiary">0.2 kg</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2.5">
+<div class="bg-tertiary/70 h-2.5 rounded-full" style="width: 66%"></div>
+</div>
+</div>
+<!-- Note -->
+<div class="mt-auto pt-4 border-t border-outline-variant border-dashed">
+<p class="font-label-md text-label-md text-secondary italic">Note: Only ingredients with recorded wastage are displayed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

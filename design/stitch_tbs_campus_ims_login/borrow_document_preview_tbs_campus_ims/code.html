@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Borrow Document Preview - TBS Campus IMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#001848",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-container-low": "#f0f3ff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#0c56d0",
+                        "secondary": "#4e6072",
+                        "on-tertiary-container": "#ffc6b2",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#101c2d",
+                        "tertiary-container": "#a33500",
+                        "tertiary-fixed": "#ffdbcf",
+                        "surface-variant": "#d7e3fb",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "outline-variant": "#c3c6d6",
+                        "secondary-container": "#d1e5fa",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "secondary-fixed": "#d1e5fa",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "surface-container-highest": "#d7e3fb",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "on-primary-container": "#c4d2ff",
+                        "on-surface": "#101c2d",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eeff",
+                        "primary-container": "#0052cc",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#091d2d",
+                        "tertiary": "#7b2600",
+                        "surface-dim": "#cedbf2",
+                        "inverse-surface": "#253143",
+                        "on-surface-variant": "#434654",
+                        "outline": "#737685",
+                        "on-secondary-container": "#546678",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "primary": "#003d9b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-high": "#dee9ff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        xl: "48px",
+                        xs: "8px",
+                        lg: "32px",
+                        gutter: "24px",
+                        sm: "16px",
+                        "container-max": "1440px",
+                        base: "4px",
+                        md: "24px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    fontSize: {
+                        "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "label-bold": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body, .print-card-container { background: white !important; margin: 0; padding: 0; min-height: 0; }
+            .print-card { box-shadow: none !important; border: none !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-slate-50 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 h-screen w-64 flex flex-col fixed left-0 top-0 z-50 transition-all duration-150 ease-in-out no-print">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold">CA</div>
+<div>
+<div class="font-bold text-blue-700 dark:text-blue-400 font-public-sans text-sm tracking-tight">Asset Management</div>
+<div class="text-xs text-slate-500">Central Administration</div>
+</div>
+</div>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 font-semibold border-r-4 border-blue-700 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+                Borrowing
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">output</span>
+                Issuing
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+                Suppliers
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">group</span>
+                Users
+            </a>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md font-public-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-64 flex flex-col flex-1 h-screen w-full">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-6 h-16 w-full docked full-width top-0 z-40 transition-colors duration-200 no-print">
+<div class="flex items-center gap-4">
+<div class="text-xl font-bold text-blue-700 dark:text-blue-400 font-public-sans text-sm font-medium">Campus Assets</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Administrator profile picture" class="w-full h-full object-cover" data-alt="professional headshot of an administrator in a campus setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA9IgE2TBIxk7LNT30bYL-5Yg-7xoM2bkiAOnAPsAGoEkg9ck0jJzDK8uElldw7Zs_WhRyEQTyFxy1mvMfTbdF7nojDafiLOYdiHafnn0MldQ6JpekafbgKpfkJkeFSvRp6MQOXgQ5X52UBUQ1mSgsKlSmbZWwsfkrfEWdiZNzYl_4SWVHym-ohiqjFnd3iB1RAqUqgqUMwM37yLKU22xVRRbrrrRh_HIlOKPs4eQAvDh3L7TR6jeoWjnqg99_ZkzeMv1ZGexbBxA"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-gutter print-card-container">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md mb-md no-print">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Borrow Requests</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">BR-2026-0042</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-semibold text-on-background">Document</span>
+</div>
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-4 no-print">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Borrow Document — BR-2026-0042</h1>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 border border-outline text-on-surface hover:bg-surface-variant rounded-DEFAULT font-label-md text-label-md flex items-center gap-2 transition-colors" onclick="window.print()">
+<span class="material-symbols-outlined">print</span>
+                        Print
+                    </button>
+<button class="px-4 py-2 bg-primary text-on-primary hover:bg-primary-fixed-variant rounded-DEFAULT font-label-md text-label-md flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined">download</span>
+                        Download PDF
+                    </button>
+</div>
+</div>
+<!-- Document Preview Card -->
+<div class="max-w-[680px] mx-auto bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-xl print-card">
+<!-- Document Header -->
+<div class="flex justify-between items-start mb-lg">
+<div>
+<div class="font-headline-lg text-headline-lg text-on-background uppercase">TBS CAMPUS</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Inventory Management System</div>
+</div>
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm text-on-background uppercase">EQUIPMENT BORROWING RECORD</div>
+</div>
+</div>
+<!-- Meta Row -->
+<div class="flex justify-between mb-sm font-label-md text-label-md text-on-surface">
+<div><span class="text-on-surface-variant font-normal">Reference No.</span> BR-2026-0042</div>
+<div><span class="text-on-surface-variant font-normal">Issue Date</span> Oct 24, 2024</div>
+</div>
+<hr class="border-outline-variant mb-md"/>
+<!-- Borrower Information -->
+<div class="mb-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface uppercase mb-sm">Borrower Information</h3>
+<div class="grid grid-cols-2 gap-sm">
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Name</div>
+<div class="font-body-md text-body-md text-on-background">Dr. Sarah Jenkins</div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Role</div>
+<div class="font-body-md text-body-md text-on-background">Faculty</div>
+</div>
+<div class="col-span-2">
+<div class="font-label-md text-label-md text-on-surface-variant">Department</div>
+<div class="font-body-md text-body-md text-on-background">Nursing &amp; Healthcare</div>
+</div>
+</div>
+</div>
+<!-- Borrowing Details -->
+<div class="mb-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface uppercase mb-sm">Borrowing Details</h3>
+<div class="grid grid-cols-2 gap-sm">
+<div class="col-span-2">
+<div class="font-label-md text-label-md text-on-surface-variant">Purpose/Event</div>
+<div class="font-body-md text-body-md text-on-background">Final practical examination for 3rd-year Nursing students</div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Required Date</div>
+<div class="font-body-md text-body-md text-on-background">Oct 28, 2024</div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Expected Return Date</div>
+<div class="font-body-md text-body-md text-on-background">Oct 30, 2024</div>
+</div>
+</div>
+</div>
+<!-- Items Borrowed Table -->
+<div class="mb-xl">
+<h3 class="font-label-bold text-label-bold text-on-surface uppercase mb-sm">Items Borrowed</h3>
+<div class="border border-outline-variant rounded-DEFAULT overflow-hidden">
+<table class="w-full text-left font-body-md text-body-md">
+<thead class="bg-surface-container-low border-b border-outline-variant font-label-md text-label-md text-on-surface">
+<tr>
+<th class="py-2 px-3">Item Name</th>
+<th class="py-2 px-3">Quantity</th>
+<th class="py-2 px-3">Serial No.</th>
+<th class="py-2 px-3">Condition at Issue</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-on-background">
+<tr>
+<td class="py-2 px-3">Surgical Gloves (M)</td>
+<td class="py-2 px-3">50 Boxes</td>
+<td class="py-2 px-3 text-on-surface-variant">N/A</td>
+<td class="py-2 px-3">New/Sealed</td>
+</tr>
+<tr>
+<td class="py-2 px-3">Digital Blood Pressure Monitor</td>
+<td class="py-2 px-3">5 Units</td>
+<td class="py-2 px-3 font-mono text-xs">TBS-ME-0092</td>
+<td class="py-2 px-3">Good</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Authorization -->
+<div class="mb-xl">
+<div class="font-body-md text-body-md text-on-background mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Approved By:</span> Marcus Thorne (Dept Admin) on Oct 25, 2024
+                    </div>
+<div class="w-64 border-t border-outline-variant pt-2 mt-8">
+<div class="font-label-md text-label-md text-on-surface-variant text-center">Authorized Signature</div>
+</div>
+</div>
+<!-- Acknowledgement -->
+<div class="mb-xl">
+<h3 class="font-label-bold text-label-bold text-on-surface uppercase mb-md">Acknowledgement</h3>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant mb-8">Received By (Borrower)</div>
+<div class="border-t border-outline-variant pt-1 mb-4">
+<div class="font-label-md text-label-md text-on-surface-variant text-center text-[10px]">Signature</div>
+</div>
+<div class="border-t border-outline-variant pt-1">
+<div class="font-label-md text-label-md text-on-surface-variant text-center text-[10px]">Date</div>
+</div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant mb-8">Released By (Stock Keeper)</div>
+<div class="border-t border-outline-variant pt-1 mb-4">
+<div class="font-label-md text-label-md text-on-surface-variant text-center text-[10px]">Signature</div>
+</div>
+<div class="border-t border-outline-variant pt-1">
+<div class="font-label-md text-label-md text-on-surface-variant text-center text-[10px]">Date</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="text-center font-label-md text-label-md text-on-surface-variant mt-xl border-t border-outline-variant pt-4">
+                    TBS Campus Inventory Management System — Confidential Record
+                </div>
+</div>
+</main>
+</div>
+</body></html>

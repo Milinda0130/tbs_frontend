@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit User - TBS Campus IMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d7e3fb",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "outline-variant": "#c3c6d6",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "secondary-container": "#d1e5fa",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "secondary-fixed": "#d1e5fa",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-highest": "#d7e3fb",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "on-primary-container": "#c4d2ff",
+                        "on-surface": "#101c2d",
+                        "inverse-primary": "#b2c5ff",
+                        "on-primary-fixed": "#001848",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary": "#4e6072",
+                        "surface-tint": "#0c56d0",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#a33500",
+                        "on-background": "#101c2d",
+                        "outline": "#737685",
+                        "on-secondary-container": "#546678",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "primary": "#003d9b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee9ff",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eeff",
+                        "primary-container": "#0052cc",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#091d2d",
+                        "tertiary": "#7b2600",
+                        "surface-dim": "#cedbf2",
+                        "inverse-surface": "#253143",
+                        "on-surface-variant": "#434654"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "lg": "32px",
+                        "gutter": "24px",
+                        "xl": "48px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-hidden">
+<!-- Top Navigation (Background) -->
+<header class="bg-surface-container-lowest text-primary-container font-label-bold font-bold border-b-2 border-primary-container pb-1 text-on-surface hover:bg-surface-variant transition-colors flex justify-between items-center w-full px-8 py-3 max-w-[1440px] mx-auto border-b border-outline-variant shadow-[0_2px_4px_rgba(0,0,0,0.05)] z-0">
+<div class="flex items-center gap-6">
+<div class="text-headline-sm font-headline-sm text-primary-container tracking-tight">TBS Campus IMS</div>
+<nav class="hidden md:flex gap-6 items-center pt-1">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-container transition-colors" href="#">Dashboard</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-container transition-colors" href="#">Inventory</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-container transition-colors" href="#">Buildings</a>
+<a class="font-label-bold text-label-bold text-primary-container border-b-2 border-primary-container pb-1" href="#">Users</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-container transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary-container">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary-container">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="professional headshot of an administrator in a blue shirt on a light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFkC6ueSjYB1476v4mcMSVmVHKy0DzQzTpCw8mW55htVozfizdVRC-8jTWoyLMHTpMUMKmTBSq3TSU-sVIdEVMQu0maQV7KNJr1wU2lOpg5DIG5CzBybRHQqJQN9mpRKknO8CDcbTAtzW6RkoubWRKP6OsKhoehWBlLOWcfSCFJs1hpzsvn7j8GmpJuWp0AVmPXCZadUmrFShh6BWdaeUNR14SQa9npuMS6sdAzdv1GarbyIjNeleorKvBX3_kO445EPVLF1afiEk"/>
+</div>
+</div>
+</header>
+<!-- Main Content (Background - Blurred/Dimmed) -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-8 py-lg opacity-40 blur-[2px] pointer-events-none">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-xs">User Management</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage administrative access and personal information</p>
+</div>
+<div class="flex gap-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none text-body-md text-on-surface w-[300px]" placeholder="Search users..." type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-4 py-2 rounded flex items-center gap-2 hover:opacity-90">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add User
+                </button>
+</div>
+</div>
+<!-- Mock Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container text-on-surface font-label-bold text-label-bold border-b border-outline-variant">
+<tr>
+<th class="p-4">Name</th>
+<th class="p-4">Role</th>
+<th class="p-4">Department</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-variant/30">
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-bold">MT</div>
+<div>
+<div class="font-semibold">Marcus Thorne</div>
+<div class="text-xs text-on-surface-variant">m.thorne@tbscampus.edu</div>
+</div>
+</td>
+<td class="p-4">Dept Admin</td>
+<td class="p-4">Computing</td>
+<td class="p-4">
+<span class="bg-primary-container/10 text-primary-container px-2 py-1 rounded-full text-[11px] font-bold">Active</span>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary-container text-[20px]">edit</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+<!-- Backdrop Overlay -->
+<div class="fixed inset-0 bg-on-surface/40 z-40 transition-opacity"></div>
+<!-- Slide-over Drawer -->
+<div class="fixed right-0 top-0 h-full w-[640px] bg-surface-container-lowest border-l border-outline-variant shadow-[-4px_0_12px_rgba(0,0,0,0.05)] z-50 flex flex-col transform transition-transform duration-300 ease-in-out">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between p-6 border-b border-outline-variant bg-surface-container-lowest">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Edit User — Marcus Thorne</h2>
+</div>
+<button class="text-outline hover:text-error transition-colors p-1 rounded-full hover:bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-8 bg-surface-container-low">
+<form class="space-y-8">
+<!-- Section 1: Personal Info -->
+<div class="bg-surface-container-lowest p-6 border border-outline-variant rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-4">
+<h3 class="text-body-lg font-headline-sm font-semibold text-on-surface border-b border-outline-variant pb-2 mb-4">Personal Info</h3>
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-bold text-label-bold text-on-surface">Full Name <span class="text-error">*</span></label>
+<input class="w-full px-3 py-2 bg-surface border border-outline-variant rounded focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none text-body-md text-on-surface transition-colors" required="" type="text" value="Marcus Thorne"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-bold text-label-bold text-on-surface">Email <span class="text-error">*</span></label>
+<input class="w-full px-3 py-2 bg-surface border border-outline-variant rounded focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none text-body-md text-on-surface transition-colors" required="" type="email" value="m.thorne@tbscampus.edu"/>
+</div>
+</div>
+</div>
+<!-- Section 2: Account -->
+<div class="bg-surface-container-lowest p-6 border border-outline-variant rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-4">
+<h3 class="text-body-lg font-headline-sm font-semibold text-on-surface border-b border-outline-variant pb-2 mb-4">Account</h3>
+<div class="space-y-6">
+<div class="flex flex-col gap-1">
+<label class="font-label-bold text-label-bold text-on-surface">Role</label>
+<div class="relative">
+<select class="w-full px-3 py-2 bg-surface border border-outline-variant rounded appearance-none focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none text-body-md text-on-surface pr-8">
+<option>Super Admin</option>
+<option>Main Coordinator</option>
+<option selected="">Dept Admin</option>
+<option>Stock Keeper</option>
+<option>Audit Officer</option>
+<option>Faculty</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-outline pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-bold text-label-bold text-on-surface">Department</label>
+<div class="relative">
+<select class="w-full px-3 py-2 bg-surface border border-outline-variant rounded appearance-none focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none text-body-md text-on-surface pr-8">
+<option>Hospitality</option>
+<option>Nursing &amp; Healthcare</option>
+<option selected="">Computing</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-outline pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div>
+<label class="font-label-bold text-label-bold text-on-surface block">Status</label>
+<span class="text-[12px] text-on-surface-variant">Toggle user account access</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+<span class="ml-3 text-label-md font-label-md text-on-surface">Active</span>
+</label>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Drawer Footer -->
+<div class="p-6 border-t border-outline-variant bg-surface-container-lowest flex justify-end gap-4 mt-auto">
+<button class="px-6 py-2 bg-transparent text-on-surface font-label-md text-label-md border border-outline-variant rounded hover:bg-surface-variant/50 transition-colors">
+                Cancel
+            </button>
+<button class="px-6 py-2 bg-primary-container text-on-primary font-label-md text-label-md rounded hover:bg-primary-container/90 transition-colors shadow-sm">
+                Update User
+            </button>
+</div>
+</div>
+</body></html>

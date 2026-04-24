@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Department Issuing Report - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#0052cc",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary-fixed": "#001848",
+                        "on-primary-container": "#c4d2ff",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "inverse-surface": "#253143",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-secondary-container": "#546678",
+                        "on-secondary-fixed": "#091d2d",
+                        "surface-bright": "#f9f9ff",
+                        "surface-variant": "#d7e3fb",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "secondary": "#4e6072",
+                        "tertiary-container": "#a33500",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "secondary-fixed": "#d1e5fa",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "surface-container-highest": "#d7e3fb",
+                        "outline": "#737685",
+                        "surface-dim": "#cedbf2",
+                        "surface-container": "#e7eeff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-tint": "#0c56d0",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dae2ff",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "on-background": "#101c2d",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "surface-container-high": "#dee9ff",
+                        "inverse-primary": "#b2c5ff",
+                        "tertiary": "#7b2600",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-surface": "#101c2d",
+                        "primary": "#003d9b",
+                        "on-surface-variant": "#434654",
+                        "secondary-container": "#d1e5fa",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "lg": "32px",
+                        "xs": "8px",
+                        "xl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #f9f9ff; }
+    </style>
+</head>
+<body class="bg-background text-on-background flex min-h-screen font-body-md">
+<!-- SideNavBar (from JSON component 1) -->
+<nav class="fixed left-0 top-0 h-full w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-900 z-40 flex flex-col duration-200 ease-in-out hidden md:flex">
+<div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-800">
+<span class="text-base font-bold text-slate-900 dark:text-white">TBS Campus IMS</span>
+</div>
+<div class="px-6 py-4">
+<p class="font-label-md text-label-md text-slate-500 uppercase tracking-wider mb-2">Institutional Management</p>
+</div>
+<div class="flex-1 overflow-y-auto py-2">
+<ul class="space-y-1 px-3">
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span>Dashboard</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">inventory_2</span>Inventory</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">swap_horiz</span>Borrowing</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">outbox</span>Issuing</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">local_shipping</span>Suppliers</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">science</span>Practical Sessions</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">videocam</span>Media Equipment</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">delete_forever</span>Waste &amp; Damage</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 text-[#0052CC] dark:text-blue-400 border-r-4 border-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">analytics</span>Reports</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">history_edu</span>Audit Logs</a></li>
+<li><a class="flex items-center px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0052CC] font-['Public_Sans'] text-[13px] font-medium transition-colors" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">group</span>Users</a></li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 min-w-0 bg-background">
+<!-- TopAppBar (from JSON component 0) -->
+<header class="flex justify-between items-center w-full h-16 px-6 bg-white dark:bg-slate-900 shadow-sm dark:shadow-none border-b border-gray-200 dark:border-gray-800 sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-slate-600 p-2 rounded-md hover:bg-slate-50">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex items-center text-sm text-slate-500 font-body-md gap-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Reports</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-slate-900 font-medium">Department Issuing Report</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 hover:bg-slate-50 p-2 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-outline-variant cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a user for avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGb0uMatnPT4npEaHRfX8Sa4O5ficuMHUurB-WaMX_xFmHG2zafSy29m_ERr9OMUFzflgxGKdvxs2eq0nvmWMquVpRa2bM_cGDJb1TZFN8QyupJEVG05nrZGtMLy0Cz0NOjjkeaJxJTDCSfsM2wQVRkEqBP7x4tfTRu3QJiZDeKBsQr-URX6W9Fir70en9V3MTd53iGlkz7gAoQTTTJkNV474aX6EGSVfLtkh_4nFega8SjpYNS9ASLV-dPpSRB3Lfugoocj4XAiU"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-6 md:p-8 overflow-y-auto max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Department Issuing Report</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Analyze items issued across departments and stores.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative group">
+<button class="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Export
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-5 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface uppercase">Department</label>
+<div class="relative">
+<select class="w-full appearance-none bg-transparent border border-outline-variant text-on-surface rounded-lg px-3 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md">
+<option value="all">All Departments</option>
+<option value="hospitality">Hospitality</option>
+<option value="nursing">Nursing &amp; Healthcare</option>
+<option value="computing">Computing</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface uppercase">Store</label>
+<div class="relative">
+<select class="w-full appearance-none bg-transparent border border-outline-variant text-on-surface rounded-lg px-3 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md">
+<option value="all">All Stores</option>
+<option value="main">Main Store</option>
+<option value="nursing">Nursing Stock</option>
+<option value="hospitality">Hospitality Stock</option>
+<option value="media">Media Equipment Store</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface uppercase">Search Item</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full bg-transparent border border-outline-variant text-on-surface rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md placeholder:text-outline" placeholder="Item name or SKU..." type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface uppercase">Date Range</label>
+<div class="flex items-center gap-2">
+<input class="w-full bg-transparent border border-outline-variant text-on-surface rounded-lg px-3 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md" type="date"/>
+<span class="text-on-surface-variant">-</span>
+<input class="w-full bg-transparent border border-outline-variant text-on-surface rounded-lg px-3 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md" type="date"/>
+</div>
+</div>
+<div class="flex items-center">
+<button class="w-full bg-primary text-white border border-transparent rounded-lg px-4 py-2 font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">manage_search</span>
+                            Generate Report
+                        </button>
+</div>
+</div>
+</div>
+<!-- Results Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden mb-8">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase cursor-pointer hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-1">Date <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase cursor-pointer hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-1">Department <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase cursor-pointer hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-1">Item Name <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase cursor-pointer hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-1">Category <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase cursor-pointer hover:bg-surface-container transition-colors group text-right">
+<div class="flex items-center justify-end gap-1">Qty <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase">Unit</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase">Issued To</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase">Issued By</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant uppercase">Remarks</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 whitespace-nowrap">Oct 27, 2023</td>
+<td class="py-3 px-4">Nursing &amp; Healthcare</td>
+<td class="py-3 px-4 font-medium">Surgical Masks</td>
+<td class="py-3 px-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-[11px]">PPE</span></td>
+<td class="py-3 px-4 text-right font-medium">400</td>
+<td class="py-3 px-4 text-on-surface-variant">Box</td>
+<td class="py-3 px-4">Nurse Sarah</td>
+<td class="py-3 px-4 text-on-surface-variant">Admin Joe</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm truncate max-w-[150px]" title="Weekly ward supply.">Weekly ward supply.</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 whitespace-nowrap">Oct 26, 2023</td>
+<td class="py-3 px-4">Hospitality</td>
+<td class="py-3 px-4 font-medium">Chef Knives Set</td>
+<td class="py-3 px-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-container/10 text-tertiary-container font-label-md text-[11px]">Uniforms/Tools</span></td>
+<td class="py-3 px-4 text-right font-medium">5</td>
+<td class="py-3 px-4 text-on-surface-variant">Set</td>
+<td class="py-3 px-4">Chef Mario</td>
+<td class="py-3 px-4 text-on-surface-variant">Admin Joe</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm truncate max-w-[150px]" title="For culinary lab 3.">For culinary lab 3.</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 whitespace-nowrap">Oct 25, 2023</td>
+<td class="py-3 px-4">Computing</td>
+<td class="py-3 px-4 font-medium">Printer Paper A4</td>
+<td class="py-3 px-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-container/10 text-primary-container font-label-md text-[11px]">Stationery</span></td>
+<td class="py-3 px-4 text-right font-medium">10</td>
+<td class="py-3 px-4 text-on-surface-variant">Ream</td>
+<td class="py-3 px-4">Dept Sec</td>
+<td class="py-3 px-4 text-on-surface-variant">Admin Joe</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm truncate max-w-[150px]" title="Office refill.">Office refill.</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-container-low border-t border-outline-variant font-label-md text-label-md">
+<tr>
+<td class="py-3 px-4 text-on-surface-variant font-medium" colspan="4">Total Rows: 24</td>
+<td class="py-3 px-4 text-right text-primary font-bold">Total Qty Issued: 415</td>
+<td colspan="4"></td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-4 py-3 border-t border-outline-variant flex items-center justify-between bg-surface-container-lowest">
+<div class="text-sm text-on-surface-variant font-body-md">
+                        Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">3</span> of <span class="font-medium text-on-surface">24</span> results
+                    </div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-outline hover:bg-surface-container hover:text-on-surface transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-white font-label-md text-sm flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded text-on-surface hover:bg-surface-container font-label-md text-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded text-on-surface hover:bg-surface-container font-label-md text-sm flex items-center justify-center transition-colors">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="p-1 rounded text-outline hover:bg-surface-container hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Category Breakdown Summary -->
+<div class="mt-8">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Category Breakdown Summary</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-container/10 text-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">edit_document</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-1">Stationery</p>
+<p class="font-headline-md text-headline-md text-on-surface">150 <span class="text-sm font-normal text-on-surface-variant">items</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">medical_mask</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-1">PPE</p>
+<p class="font-headline-md text-headline-md text-on-surface">200 <span class="text-sm font-normal text-on-surface-variant">items</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/10 text-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">styler</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-1">Uniforms/Tools</p>
+<p class="font-headline-md text-headline-md text-on-surface">65 <span class="text-sm font-normal text-on-surface-variant">items</span></p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

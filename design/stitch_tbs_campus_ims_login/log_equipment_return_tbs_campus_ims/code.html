@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Equipment Return Logging - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#091d2d",
+                      "tertiary-fixed": "#ffdbcf",
+                      "on-tertiary-container": "#ffc6b2",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "tertiary-fixed-dim": "#ffb59b",
+                      "primary": "#003d9b",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#0052cc",
+                      "on-surface-variant": "#434654",
+                      "on-secondary-container": "#546678",
+                      "secondary-container": "#d1e5fa",
+                      "surface-container-high": "#dee9ff",
+                      "outline-variant": "#c3c6d6",
+                      "error": "#ba1a1a",
+                      "outline": "#737685",
+                      "background": "#f9f9ff",
+                      "inverse-surface": "#253143",
+                      "on-error": "#ffffff",
+                      "surface-tint": "#0c56d0",
+                      "tertiary-container": "#a33500",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#7b2600",
+                      "surface-dim": "#cedbf2",
+                      "on-primary-fixed": "#001848",
+                      "inverse-primary": "#b2c5ff",
+                      "on-primary-fixed-variant": "#0040a2",
+                      "secondary": "#4e6072",
+                      "on-primary-container": "#c4d2ff",
+                      "surface-variant": "#d7e3fb",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#d7e3fb",
+                      "secondary-fixed": "#d1e5fa",
+                      "on-background": "#101c2d",
+                      "surface-container": "#e7eeff",
+                      "on-tertiary-fixed-variant": "#812800",
+                      "on-surface": "#101c2d",
+                      "secondary-fixed-dim": "#b6c8dd",
+                      "on-secondary-fixed-variant": "#37495a",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#380d00",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#f0f3ff",
+                      "surface": "#f9f9ff",
+                      "primary-fixed": "#dae2ff",
+                      "success": "#0b8a00",
+                      "on-success": "#ffffff",
+                      "warning": "#e6a23c",
+                      "on-warning": "#ffffff",
+                      "warning-container": "#fdf6ec",
+                      "on-warning-container": "#b88230"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "lg": "32px",
+                      "xl": "48px",
+                      "sm": "16px",
+                      "container-max": "1440px",
+                      "base": "4px",
+                      "md": "24px",
+                      "xs": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Public Sans"
+                      ],
+                      "label-bold": [
+                              "Public Sans"
+                      ],
+                      "headline-sm": [
+                              "Public Sans"
+                      ],
+                      "body-md": [
+                              "Public Sans"
+                      ],
+                      "label-md": [
+                              "Public Sans"
+                      ],
+                      "headline-md": [
+                              "Public Sans"
+                      ],
+                      "body-lg": [
+                              "Public Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-bold": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface h-screen w-full overflow-hidden flex antialiased">
+<!-- App Shell: SideNavBar -->
+<nav class="hidden md:flex flex-col bg-[#F5F5F5] font-['Public_Sans'] text-sm font-medium w-64 h-full border-r border-[#E1E4E8] fixed left-0 top-0 z-40 py-6 transition-all duration-200 ease-in-out">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold">TB</div>
+<div>
+<h1 class="text-base font-black text-slate-900 tracking-tight">TBS Campus</h1>
+<p class="text-xs text-slate-500 font-normal">Administrative Portal</p>
+</div>
+</div>
+<div class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 hover:bg-white/50 rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 hover:bg-white/50 rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 bg-white text-[#0052CC] shadow-sm rounded-r-lg border-l-4 border-[#0052CC]" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_return" style="font-variation-settings: 'FILL' 1;">assignment_return</span>
+<span>Equipment Returns</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 hover:bg-white/50 rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span>Staff Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 hover:bg-white/50 rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Reports</span>
+</a>
+</div>
+<div class="px-4 space-y-1 mt-auto border-t border-[#E1E4E8] pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 hover:bg-white/50 rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-slate-900 hover:bg-white/50 rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-0 md:ml-64 w-full h-full relative">
+<!-- App Shell: TopNavBar -->
+<header class="flex justify-between items-center w-full px-6 h-16 fixed top-0 z-30 bg-white font-['Public_Sans'] antialiased border-b border-[#E1E4E8] shadow-sm ml-0 md:ml-64" style="width: calc(100% - 256px);">
+<div class="flex items-center gap-4">
+<span class="text-lg font-bold text-[#0052CC] tracking-tight">TBS Campus IMS</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-600 hover:bg-slate-50 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-600 hover:bg-slate-50 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden ml-2 border border-slate-300">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Default user profile avatar with initials" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe-aHS_rudTc0l2WVIea1f9jto4xDI38GtFa3ENrdVvb-TiF52Q3tKa1LZmvuXkJRQjY9oQsqSyNYjAIDmbZdAdYOKtBZY2SQ5gkZFsXXDiq9xqPmhyI793pEEkE2cGfniAHBu-gcjxHXEYh3C9oC0Ns911x0zH0soNk7kQBLJfdJe0TXohA08cMJkHaEEUFu4HfBuvwFVkHbfern2sbECilPlKyY_xQcYua5M-3-hdVr_amvt8kuHIzdJAY3pSalyue762K2UmD0"/>
+</div>
+</div>
+</header>
+<!-- Background Content (Simulated) -->
+<main class="flex-1 pt-24 px-gutter pb-lg overflow-y-auto w-full max-w-container-max mx-auto filter blur-[2px]">
+<h2 class="font-headline-lg text-headline-lg mb-6">Equipment Returns</h2>
+<div class="bg-white rounded-xl border border-outline-variant p-6 h-[800px]">
+<!-- Dummy content to show behind overlay -->
+<div class="h-10 bg-surface-container rounded mb-4 w-1/3"></div>
+<div class="space-y-4">
+<div class="h-16 bg-surface-container-low rounded border border-surface-variant"></div>
+<div class="h-16 bg-surface-container-low rounded border border-surface-variant"></div>
+<div class="h-16 bg-surface-container-low rounded border border-surface-variant"></div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-on-surface/40 z-50 flex justify-end transition-opacity backdrop-blur-sm">
+<!-- Slide-over Drawer -->
+<div class="w-full max-w-[600px] h-full bg-surface-container-lowest shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out border-l border-outline-variant">
+<!-- Drawer Header -->
+<div class="px-md py-sm border-b border-outline-variant flex items-center justify-between bg-surface-container-lowest sticky top-0 z-10">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Log Equipment Return — BR-2026-0042</h2>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Body -->
+<div class="flex-1 overflow-y-auto p-md space-y-lg">
+<!-- Return Date -->
+<div class="space-y-base">
+<label class="font-label-bold text-label-bold text-on-surface block" for="returnDate">Return Date <span class="text-error">*</span></label>
+<div class="relative max-w-xs">
+<input class="w-full h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-on-surface" id="returnDate" required="" type="date" value="2023-10-24"/>
+</div>
+</div>
+<!-- Item Cards Section -->
+<div class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-sm border-b border-outline-variant pb-base">Items to Return</h3>
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm shadow-sm space-y-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-sm text-[16px] leading-[24px] font-semibold text-on-surface">Sony Alpha A7 III</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Serial: SN-8823901</p>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-label-md text-[10px] uppercase">Media Equipment Store</span>
+</div>
+<div class="pt-base">
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Condition Status</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-3 rounded border border-success bg-success/10 text-success font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Good
+                                </button>
+<button class="flex-1 py-2 px-3 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md">Fair</button>
+<button class="flex-1 py-2 px-3 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md">Damaged</button>
+</div>
+</div>
+</div>
+<!-- Card 2 (Damaged) -->
+<div class="bg-surface-container-lowest border border-error/30 rounded-lg p-sm shadow-sm space-y-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-start pl-2">
+<div>
+<h4 class="font-headline-sm text-[16px] leading-[24px] font-semibold text-on-surface">Rode NT1 Condenser Mic</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Serial: SN-4491220</p>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-label-md text-[10px] uppercase">Media Equipment Store</span>
+</div>
+<div class="pt-base pl-2">
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Condition Status</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-3 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md">Good</button>
+<button class="flex-1 py-2 px-3 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md">Fair</button>
+<button class="flex-1 py-2 px-3 rounded border border-error bg-error/10 text-error font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">warning</span> Damaged
+                                </button>
+</div>
+</div>
+<div class="pt-sm pl-2">
+<label class="font-label-bold text-label-bold text-error block mb-xs" for="damageNotes">Damage Notes <span class="text-error">*</span></label>
+<textarea class="w-full px-3 py-2 bg-surface-container-lowest border border-error/50 rounded focus:border-error focus:ring-1 focus:ring-error outline-none transition-colors font-body-md text-on-surface resize-none" id="damageNotes" placeholder="Describe the damage in detail." required="" rows="2"></textarea>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm shadow-sm space-y-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-sm text-[16px] leading-[24px] font-semibold text-on-surface">Aputure 120d II Kit</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Serial: SN-1109923</p>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-label-md text-[10px] uppercase">Media Equipment Store</span>
+</div>
+<div class="pt-base">
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Condition Status</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-3 rounded border border-success bg-success/10 text-success font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Good
+                                </button>
+<button class="flex-1 py-2 px-3 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md">Fair</button>
+<button class="flex-1 py-2 px-3 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md">Damaged</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Warning Notice -->
+<div class="bg-warning-container border border-warning/30 rounded p-sm flex items-start gap-3">
+<span class="material-symbols-outlined text-on-warning-container">info</span>
+<p class="font-body-md text-body-md text-on-warning-container pt-[2px]">Damaged items will be automatically flagged for repair in the inventory system.</p>
+</div>
+<!-- General Notes -->
+<div class="space-y-base pb-xl">
+<label class="font-label-bold text-label-bold text-on-surface block" for="generalNotes">General Notes</label>
+<textarea class="w-full px-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-on-surface resize-none" id="generalNotes" placeholder="Add any additional context for this return..." rows="3"></textarea>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="p-md border-t border-outline-variant bg-surface-container-lowest flex justify-end gap-3 sticky bottom-0 z-10">
+<button class="px-4 py-2 rounded border border-outline-variant text-on-surface-variant bg-transparent hover:bg-surface-container transition-colors font-label-md text-label-md">
+                    Cancel
+                </button>
+<button class="px-4 py-2 rounded border border-success bg-success text-on-success hover:bg-success/90 transition-colors font-label-md text-label-md shadow-sm">
+                    Confirm Return
+                </button>
+</div>
+</div>
+</div>
+</body></html>

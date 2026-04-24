@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Log Waste / Damage - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f9f9ff",
+                    "inverse-surface": "#253143",
+                    "surface-variant": "#d7e3fb",
+                    "tertiary": "#7b2600",
+                    "tertiary-container": "#a33500",
+                    "primary": "#003d9b",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-surface": "#101c2d",
+                    "surface-container-highest": "#d7e3fb",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdbcf",
+                    "primary-container": "#0052cc",
+                    "primary-fixed": "#dae2ff",
+                    "on-secondary-fixed": "#091d2d",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#e7eeff",
+                    "surface": "#f9f9ff",
+                    "surface-tint": "#0c56d0",
+                    "surface-container-high": "#dee9ff",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "on-tertiary-container": "#ffc6b2",
+                    "on-primary-fixed-variant": "#0040a2",
+                    "on-secondary-container": "#546678",
+                    "surface-dim": "#cedbf2",
+                    "on-secondary-fixed-variant": "#37495a",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#380d00",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#b6c8dd",
+                    "on-surface-variant": "#434654",
+                    "surface-container-low": "#f0f3ff",
+                    "outline": "#737685",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c3c6d6",
+                    "on-primary-fixed": "#001848",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb59b",
+                    "on-primary-container": "#c4d2ff",
+                    "secondary-container": "#d1e5fa",
+                    "inverse-primary": "#b2c5ff",
+                    "secondary-fixed": "#d1e5fa",
+                    "secondary": "#4e6072",
+                    "surface-bright": "#f9f9ff",
+                    "on-tertiary-fixed-variant": "#812800",
+                    "on-error-container": "#93000a",
+                    "on-background": "#101c2d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "sm": "16px",
+                    "xl": "48px",
+                    "gutter": "24px",
+                    "xs": "8px",
+                    "md": "24px",
+                    "base": "4px",
+                    "lg": "32px"
+            },
+            "fontFamily": {
+                    "label-bold": [
+                            "Public Sans"
+                    ],
+                    "headline-sm": [
+                            "Public Sans"
+                    ],
+                    "headline-lg": [
+                            "Public Sans"
+                    ],
+                    "label-md": [
+                            "Public Sans"
+                    ],
+                    "headline-md": [
+                            "Public Sans"
+                    ],
+                    "body-lg": [
+                            "Public Sans"
+                    ],
+                    "body-md": [
+                            "Public Sans"
+                    ]
+            },
+            "fontSize": {
+                    "label-bold": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md relative overflow-hidden h-screen w-screen flex">
+<!-- Background Context: Waste & Damage List Page (Dimmed) -->
+<div class="absolute inset-0 z-0 flex flex-col pointer-events-none opacity-50">
+<!-- TopAppBar (Simulated Context) -->
+<header class="bg-white border-b border-gray-200 shadow-sm flex justify-between items-center h-16 px-6 w-full z-10">
+<div class="flex items-center gap-6">
+<span class="font-public-sans text-xl font-bold text-primary tracking-tight">TBS Campus IMS</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-gray-600 hover:text-primary transition-colors text-sm font-medium py-5" href="#">Dashboard</a>
+<a class="text-gray-600 hover:text-primary transition-colors text-sm font-medium py-5" href="#">Inventory</a>
+<a class="text-gray-600 hover:text-primary transition-colors text-sm font-medium py-5" href="#">Reports</a>
+<a class="text-gray-600 hover:text-primary transition-colors text-sm font-medium py-5" href="#">Settings</a>
+</nav>
+</div>
+</header>
+<!-- Main Layout Container -->
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Simulated Context) -->
+<aside class="bg-gray-50 border-r border-gray-200 h-full w-64 flex-col pt-6 hidden md:flex z-10">
+<div class="px-6 mb-8">
+<div class="font-label-bold text-gray-500 uppercase mb-2">Inventory Management</div>
+<div class="text-sm text-gray-900 font-semibold">TBS Campus Main</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                        Overview
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+                        Stock Control
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-lg">location_on</span>
+                        Asset Tracking
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-50 text-primary font-semibold border-r-4 border-primary text-sm" href="#">
+<span class="material-symbols-outlined text-lg">delete_sweep</span>
+                        Waste Logs
+                    </a>
+</nav>
+</aside>
+<!-- Main Content Area (Simulated Context) -->
+<main class="flex-1 p-8 bg-background">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex justify-between items-center mb-6">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Waste &amp; Damage Logs</h1>
+<button class="bg-primary text-white px-4 py-2 rounded-DEFAULT font-label-md text-label-md hover:bg-primary-container transition-colors">Log New Entry</button>
+</div>
+<!-- Dummy Table Area -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 h-[600px]">
+<div class="h-12 border-b border-gray-100 mb-4 bg-gray-50 flex items-center px-4"><span class="text-gray-400 font-label-bold text-label-bold">Loading records...</span></div>
+<div class="space-y-4">
+<div class="h-16 bg-gray-50 rounded-DEFAULT"></div>
+<div class="h-16 bg-gray-50 rounded-DEFAULT"></div>
+<div class="h-16 bg-gray-50 rounded-DEFAULT"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- Overlay Dimming -->
+<div class="absolute inset-0 bg-gray-900/40 z-40 transition-opacity"></div>
+<!-- Slide-over Panel -->
+<div class="absolute inset-y-0 right-0 z-50 w-full max-w-[560px] bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-0 border-l border-gray-200">
+<!-- Header -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-gray-200 bg-white">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Log Waste / Damage</h2>
+<button class="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<div class="flex-1 overflow-y-auto px-6 py-6 bg-surface-container-lowest">
+<form class="space-y-6">
+<!-- Store Dropdown -->
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider" for="store-select">Store <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full appearance-none bg-white border border-outline-variant rounded-DEFAULT py-3 pl-4 pr-10 text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-shadow shadow-sm" id="store-select">
+<option value="">Select a store...</option>
+<option value="main">Main Store</option>
+<option value="nursing">Nursing Stock</option>
+<option value="hospitality">Hospitality Stock</option>
+<option value="media">Media Equipment Store</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-outline">
+<span class="material-symbols-outlined text-xl">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Item Searchable Dropdown -->
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider" for="item-search">Item <span class="text-error">*</span></label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-xl">search</span>
+</div>
+<input class="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-DEFAULT text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-shadow shadow-sm" id="item-search" placeholder="Select item to log waste..." type="text" value="Nitrile Gloves, Medium (Box of 100)"/>
+<!-- Simulated dropdown options context -->
+<div class="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg z-20 hidden">
+<!-- Options would go here -->
+</div>
+</div>
+</div>
+<!-- Waste Type Toggles -->
+<div class="space-y-2 pt-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-3">Waste Type <span class="text-error">*</span></label>
+<div class="flex gap-4">
+<!-- Expired Toggle (Selected state example) -->
+<label class="flex-1 relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="waste_type" type="radio" value="expired"/>
+<div class="w-full text-center py-3 px-4 rounded-xl border-2 border-error bg-error-container text-on-error-container font-label-md text-label-md transition-all">
+                                Expired
+                            </div>
+</label>
+<!-- Damaged Toggle (Unselected state example) -->
+<label class="flex-1 relative cursor-pointer group">
+<input class="peer sr-only" name="waste_type" type="radio" value="damaged"/>
+<div class="w-full text-center py-3 px-4 rounded-xl border border-outline-variant bg-white text-on-surface-variant font-label-md text-label-md hover:border-gray-400 hover:bg-gray-50 transition-all peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-700">
+                                Damaged
+                            </div>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6 pt-2">
+<!-- Quantity Input -->
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider" for="quantity">Quantity <span class="text-error">*</span></label>
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-DEFAULT text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-shadow shadow-sm" id="quantity" min="1" type="number" value="2"/>
+<p class="text-xs text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                            Current stock: 45 units. This will deduct from stock.
+                        </p>
+</div>
+<!-- Date Picker -->
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider" for="incident-date">Date of Incident <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-DEFAULT text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-shadow shadow-sm" id="incident-date" type="date" value="2023-10-27"/>
+</div>
+</div>
+</div>
+<!-- Notes Textarea -->
+<div class="space-y-2 pt-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider" for="notes">Notes / Reason <span class="text-error">*</span></label>
+<textarea class="w-full px-4 py-3 bg-white border border-outline-variant rounded-DEFAULT text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-shadow shadow-sm resize-none" id="notes" placeholder="Enter batch number or expiry reason." rows="4"></textarea>
+</div>
+</form>
+</div>
+<!-- Footer Actions -->
+<div class="px-6 py-5 border-t border-gray-200 bg-gray-50 flex items-center justify-end gap-3 mt-auto">
+<button class="px-5 py-2.5 rounded-DEFAULT border border-outline-variant bg-transparent text-on-surface font-label-md text-label-md hover:bg-gray-100 transition-colors" type="button">
+                Cancel
+            </button>
+<button class="px-5 py-2.5 rounded-DEFAULT bg-error text-on-error font-label-md text-label-md hover:bg-red-800 transition-colors flex items-center gap-2 shadow-sm" type="button">
+<!-- Loading Spinner (Simulated visual) -->
+<svg class="animate-spin -ml-1 mr-1 h-4 w-4 text-white" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+                Log Entry
+            </button>
+</div>
+</div>
+</body></html>

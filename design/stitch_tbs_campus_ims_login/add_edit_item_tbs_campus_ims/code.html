@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Item - TBS Campus IMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#101c2d",
+                        "on-secondary-fixed-variant": "#37495a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d1e5fa",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "outline": "#737685",
+                        "on-secondary-fixed": "#091d2d",
+                        "on-secondary-container": "#546678",
+                        "on-primary-fixed": "#001848",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "tertiary-fixed": "#ffdbcf",
+                        "secondary-fixed": "#d1e5fa",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#7b2600",
+                        "tertiary-container": "#a33500",
+                        "surface-container-low": "#f0f3ff",
+                        "background": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#ffc6b2",
+                        "surface-container-highest": "#d7e3fb",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#253143",
+                        "on-tertiary-fixed": "#380d00",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee9ff",
+                        "on-surface-variant": "#434654",
+                        "on-secondary": "#ffffff",
+                        "primary": "#003d9b",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-primary-container": "#c4d2ff",
+                        "surface-dim": "#cedbf2",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d7e3fb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "inverse-primary": "#b2c5ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-background": "#101c2d",
+                        "secondary-fixed-dim": "#b6c8dd",
+                        "surface-tint": "#0c56d0",
+                        "secondary": "#4e6072",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e7eeff",
+                        "primary-container": "#0052cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "48px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "lg": "32px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "xs": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "headline-sm": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-bold": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
+<!-- Backdrop -->
+<div class="fixed inset-0 bg-inverse-surface/40 z-40 transition-opacity"></div>
+<!-- Slide-over Drawer -->
+<div class="fixed inset-y-0 right-0 z-50 w-full max-w-[680px] bg-surface-container-lowest shadow-xl flex flex-col transform transition-transform duration-300 ease-in-out border-l border-outline-variant/30">
+<!-- Header -->
+<div class="flex items-center justify-between px-md py-sm border-b border-outline-variant/30 bg-surface-container-lowest shrink-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Add New Item</h2>
+<button class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full p-xs transition-colors focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-md space-y-lg custom-scrollbar">
+<!-- Basic Info -->
+<section class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase">Basic Info</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="itemName">Item Name <span class="text-error">*</span></label>
+<input "="" class="w-full h-10 px-xs py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors" id="itemName" name="itemName" placeholder="e.g., MacBook Pro 16\" type="text"/>
+</div>
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="skuCode">SKU/Item Code <span class="text-error">*</span></label>
+<input class="w-full h-10 px-xs py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors" id="skuCode" name="skuCode" placeholder="e.g., MBP-16-2023-001" type="text"/>
+</div>
+</div>
+</section>
+<!-- Classification -->
+<section class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase">Classification</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="category">Category</label>
+<div class="relative">
+<select class="w-full h-10 pl-xs pr-[32px] py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface appearance-none transition-colors" id="category" name="category">
+<option disabled="" selected="" value="">Select Category</option>
+<option value="stationery">Stationery</option>
+<option value="media_equipment">Media Equipment</option>
+<option value="furniture">Furniture</option>
+<option value="it_hardware">IT Hardware</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="uom">Unit of Measure</label>
+<div class="relative">
+<select class="w-full h-10 pl-xs pr-[32px] py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface appearance-none transition-colors" id="uom" name="uom">
+<option disabled="" selected="" value="">Select Unit</option>
+<option value="piece">Piece</option>
+<option value="box">Box</option>
+<option value="pack">Pack</option>
+<option value="set">Set</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="space-y-base md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface" for="storeAssignment">Store Assignment</label>
+<div class="relative">
+<select class="w-full h-10 pl-xs pr-[32px] py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface appearance-none transition-colors" id="storeAssignment" name="storeAssignment">
+<option disabled="" selected="" value="">Select Store</option>
+<option value="main_store">Main Store</option>
+<option value="media_equipment_store">Media Equipment Store</option>
+<option value="it_storage">IT Storage Room</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="space-y-base md:col-span-2 pt-xs">
+<span class="block font-label-md text-label-md text-on-surface">Item Type</span>
+<div class="flex items-center space-x-sm">
+<label class="flex items-center space-x-xs cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input class="peer sr-only" name="itemType" type="radio" value="consumable"/>
+<div class="w-4 h-4 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center transition-colors">
+<div class="w-2 h-2 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-on-surface transition-colors">Consumable</span>
+</label>
+<label class="flex items-center space-x-xs cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer sr-only" name="itemType" type="radio" value="non_consumable"/>
+<div class="w-4 h-4 rounded-full border border-primary flex items-center justify-center transition-colors">
+<div class="w-2 h-2 rounded-full bg-primary opacity-100 transition-opacity"></div>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-on-surface transition-colors">Non-Consumable</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Stock Settings -->
+<section class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase">Stock Settings</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="initialStock">Initial Stock Quantity</label>
+<input class="w-full h-10 px-xs py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors" id="initialStock" min="0" name="initialStock" placeholder="0" type="number"/>
+</div>
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="minStock">Minimum Stock Level</label>
+<input class="w-full h-10 px-xs py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors" id="minStock" min="0" name="minStock" placeholder="0" type="number"/>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Triggers a low-stock alert when quantity falls below this value.</p>
+</div>
+<div class="space-y-base md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface" for="supplier">Supplier</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-xs top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="search">search</span>
+<input class="w-full h-10 pl-[32px] pr-xs py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors" id="supplier" name="supplier" placeholder="Search suppliers..." type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Special Fields (Conditional based on Store Assignment usually, shown here for design) -->
+<section class="space-y-sm bg-surface-container p-sm rounded-lg border border-outline-variant/30">
+<div class="flex items-center space-x-xs mb-xs">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<h3 class="font-label-bold text-label-bold text-primary uppercase">Media Equipment Specific</h3>
+</div>
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="serialNumber">Serial Number</label>
+<input class="w-full h-10 px-xs py-base bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors" id="serialNumber" name="serialNumber" placeholder="Enter serial number for tracking" type="text"/>
+</div>
+</section>
+<!-- Settings -->
+<section class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase">Settings</h3>
+<div class="flex items-start justify-between bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-lg">
+<div class="space-y-1 pr-sm">
+<label class="block font-label-md text-label-md text-on-surface cursor-pointer" for="approvalRequired">Approval Required</label>
+<p class="font-body-md text-[13px] text-on-surface-variant">Require admin approval before this item can be borrowed or issued.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" id="approvalRequired" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary transition-colors"></div>
+</label>
+</div>
+</section>
+<!-- Notes -->
+<section class="space-y-sm pb-md">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase">Additional Info</h3>
+<div class="space-y-base">
+<label class="block font-label-md text-label-md text-on-surface" for="notes">Notes</label>
+<textarea class="w-full px-xs py-sm bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 transition-colors resize-y" id="notes" name="notes" placeholder="Add any additional details or context here..." rows="3"></textarea>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<div class="flex items-center justify-end px-md py-sm border-t border-outline-variant/30 bg-surface-container-lowest space-x-sm shrink-0">
+<button class="px-sm py-xs h-10 rounded font-label-md text-label-md text-on-surface border border-outline-variant hover:bg-surface-container-low transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button">
+                Cancel
+            </button>
+<button class="px-sm py-xs h-10 rounded font-label-md text-label-md text-on-primary bg-primary hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm" type="submit">
+                Save Item
+            </button>
+</div>
+</div>
+</body></html>
