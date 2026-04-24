@@ -6,6 +6,7 @@ import { getItem, getItemMovements } from '@/api/inventoryApi';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { useAuth } from '@/stores/AuthContext';
 import { StockInSlideOver } from '@/features/inventory/components/StockInSlideOver';
+import { ItemFormSlideOver } from '@/features/inventory/components/ItemFormSlideOver';
 
 interface ItemMovement {
   id: number;
@@ -42,6 +43,7 @@ interface ItemDetail {
 export const ItemDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { hasRole } = useAuth();
+  const [editOpen, setEditOpen] = useState(false);
   const [stockInOpen, setStockInOpen] = useState(false);
   const itemId = id ?? '';
 
@@ -161,7 +163,10 @@ export const ItemDetailPage: React.FC = () => {
           </div>
           <div className="flex flex-wrap gap-3">
             {!hasRole(['Audit Officer']) && (
-              <button className="px-4 py-2 bg-surface-container-lowest text-on-surface border border-outline-variant rounded-lg font-label-md hover:bg-surface-container-low transition-colors shadow-sm">
+              <button
+                onClick={() => setEditOpen(true)}
+                className="px-4 py-2 bg-surface-container-lowest text-on-surface border border-outline-variant rounded-lg font-label-md hover:bg-surface-container-low transition-colors shadow-sm"
+              >
                 Edit Item
               </button>
             )}
@@ -369,6 +374,26 @@ export const ItemDetailPage: React.FC = () => {
             supplier_id: item.supplier_id ?? null,
           }}
           onClose={() => setStockInOpen(false)}
+        />
+      )}
+
+      {editOpen && (
+        <ItemFormSlideOver
+          open
+          item={{
+            id: itemId,
+            item_name: item.item_name,
+            sku: item.sku,
+            category: item.category,
+            unit: item.unit,
+            store_name: item.store_name,
+            item_type: item.item_type as 'Consumable' | 'Non-Consumable',
+            min_stock: item.min_stock,
+            supplier_id: item.supplier_id ?? null,
+            approval_required: item.approval_required,
+            notes: '',
+          }}
+          onClose={() => setEditOpen(false)}
         />
       )}
     </main>

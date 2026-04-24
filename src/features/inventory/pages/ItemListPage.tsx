@@ -8,6 +8,7 @@ import { useAuth } from '@/stores/AuthContext';
 import { DataTable, Column } from '@/components/ui/DataTable';
 import { Badge } from '@/components/ui/Badge';
 import { StockInSlideOver } from '@/features/inventory/components/StockInSlideOver';
+import { ItemFormItem, ItemFormSlideOver } from '@/features/inventory/components/ItemFormSlideOver';
 
 interface InventoryItem {
   id: string;
@@ -42,7 +43,8 @@ export const ItemListPage: React.FC = () => {
 
   const [searchInput, setSearchInput] = useState(search);
   const debouncedSearch = useDebounce(searchInput, 300);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [itemFormItem, setItemFormItem] = useState<ItemFormItem | null>(null);
+  const [isItemFormOpen, setIsItemFormOpen] = useState(false);
   const [stockInItem, setStockInItem] = useState<InventoryItem | null>(null);
 
   useEffect(() => {
@@ -131,7 +133,10 @@ export const ItemListPage: React.FC = () => {
           {!hasRole(['Audit Officer']) && (
             <>
               <button 
-                onClick={() => {/* Open ItemFormSlideOver */}}
+                onClick={() => {
+                  setItemFormItem(row);
+                  setIsItemFormOpen(true);
+                }}
                 className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
                 title="Edit Item"
               >
@@ -159,7 +164,10 @@ export const ItemListPage: React.FC = () => {
           <div className="flex justify-between items-center w-full">
             <h1 className="font-headline-lg text-headline-lg text-on-surface">Inventory</h1>
             <button 
-              onClick={() => setIsAddModalOpen(true)}
+              onClick={() => {
+                setItemFormItem(null);
+                setIsItemFormOpen(true);
+              }}
               className="bg-primary-container text-white px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-sm"
             >
               <Plus size={18} />
@@ -271,24 +279,15 @@ export const ItemListPage: React.FC = () => {
         />
       </div>
 
-      {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Add New Item</h2>
-            <p className="text-slate-600 mb-6">Form implementation goes here...</p>
-            <div className="flex justify-end gap-3">
-              <button 
-                onClick={() => setIsAddModalOpen(false)}
-                className="px-4 py-2 border border-slate-300 rounded hover:bg-slate-50"
-              >
-                Cancel
-              </button>
-              <button className="px-4 py-2 bg-primary-container text-white rounded hover:bg-blue-700">
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
+      {isItemFormOpen && (
+        <ItemFormSlideOver
+          open
+          item={itemFormItem}
+          onClose={() => {
+            setIsItemFormOpen(false);
+            setItemFormItem(null);
+          }}
+        />
       )}
 
       {stockInItem && (
