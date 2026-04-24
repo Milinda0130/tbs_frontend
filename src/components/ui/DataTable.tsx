@@ -55,8 +55,8 @@ export function DataTable<T>({
         <thead>
           <tr className="bg-slate-50 border-b border-[#E1E4E8]">
             {columns.map((col, index) => (
-              <th 
-                key={String(col.key) + index} 
+              <th
+                key={String(col.key) + index}
                 className={`py-3 px-4 text-label-bold text-on-surface-variant uppercase tracking-wider ${col.sortable ? 'cursor-pointer select-none hover:bg-slate-100' : ''}`}
                 onClick={() => col.sortable && handleSortClick(String(col.key))}
               >
@@ -85,8 +85,8 @@ export function DataTable<T>({
             </tr>
           ) : (
             data.map((row, rowIndex) => (
-              <tr 
-                key={rowIndex} 
+              <tr
+                key={rowIndex}
                 className={`border-b border-[#E1E4E8] hover:bg-slate-50 transition-colors ${rowClassName ? rowClassName(row) : ''}`}
               >
                 {columns.map((col, colIndex) => {
@@ -103,21 +103,21 @@ export function DataTable<T>({
           )}
         </tbody>
       </table>
-      
+
       {!loading && data.length > 0 && pagination && pagination.total > pagination.perPage && (
         <div className="flex items-center justify-between px-4 py-3 border-t border-[#E1E4E8] bg-surface-container-lowest">
           <div className="text-body-md text-on-surface-variant">
             Showing {(pagination.page - 1) * pagination.perPage + 1} to {Math.min(pagination.page * pagination.perPage, pagination.total)} of {pagination.total} entries
           </div>
           <div className="flex gap-2">
-            <button 
+            <button
               disabled={pagination.page === 1}
               onClick={() => pagination.onChange(pagination.page - 1)}
               className="px-3 py-1 text-body-md border border-outline-variant rounded disabled:opacity-50 text-primary"
             >
               Previous
             </button>
-            <button 
+            <button
               disabled={pagination.page * pagination.perPage >= pagination.total}
               onClick={() => pagination.onChange(pagination.page + 1)}
               className="px-3 py-1 text-body-md border border-outline-variant rounded disabled:opacity-50 text-primary"
@@ -130,3 +130,5 @@ export function DataTable<T>({
     </div>
   );
 }
+
+export default DataTable;
