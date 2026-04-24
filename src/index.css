@@ -83,3 +83,15 @@
     text-wrap: balance;
   }
 }
+
+@media print {
+  .sidebar,
+  .app-header,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+  }
+}

@@ -2,6 +2,13 @@ import axiosInstance from './axiosInstance'
 
 // ── Add your inventory-specific types and calls here ──
 export const inventoryApi = {
+  search: async (query: string) => {
+    const { data } = await axiosInstance.get('/inventory', {
+      params: { search: query },
+    })
+    return data
+  },
+
   getAll: (params?: Record<string, unknown>) =>
     axiosInstance.get('/inventory', { params }),
 
