@@ -6,7 +6,6 @@ import ApprovalQueuePage from '@/features/borrowing/pages/ApprovalQueuePage'
 import BorrowDocumentPage from '@/features/borrowing/pages/BorrowDocumentPage'
 import IssueItemsPage from '@/features/issuing/pages/IssueItemsPage'
 import IssuingHistoryPage from '@/features/issuing/pages/IssuingHistoryPage'
-import MockLoginPage from '@/pages/MockLoginPage'
 import { useAuth, type UserRole } from '@/stores/AuthContext'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -58,7 +57,7 @@ function RoleRoute({
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/login" element={<MockLoginPage />} />
+      <Route path="/login" element={<div className="min-h-screen bg-gray-950 flex items-center justify-center text-white">Login page coming from Milinda</div>} />
 
       <Route
         path="/borrow-requests"
