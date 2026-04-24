@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { ItemListPage } from '@/features/inventory/pages/ItemListPage';
 import { ItemDetailPage } from '@/features/inventory/pages/ItemDetailPage';
 import { LowStockPage } from '@/features/inventory/pages/LowStockPage';
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <ItemListPage />,
+        element: <Navigate to="/inventory" replace />,
       },
       {
         path: '/inventory',
