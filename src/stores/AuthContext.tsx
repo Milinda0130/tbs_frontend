@@ -85,7 +85,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setTokenState(null)
     setUser(null)
     queryClient.clear()
-    navigate('/reports', { replace: true })
+    navigate('/login', { replace: true })
   }, [navigate])
 
   // Keep ref always up to date so axiosInstance can call it
@@ -101,14 +101,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Redirect to role default page
     const roleDefaults: Record<UserRole, string> = {
-      Admin:           '/dashboard',
-      'Main Coordinator': '/reports',
+      Admin:           '/inventory',
+      'Main Coordinator': '/purchase-orders',
       'Stock Keeper':  '/inventory',
-      'Audit Officer': '/reports',
+      'Audit Officer': '/issuing-history',
       Faculty:         '/borrow-requests',
       'Dept Admin':    '/borrow-requests',
     }
-    navigate(roleDefaults[newUser.role] ?? '/dashboard', { replace: true })
+    navigate(roleDefaults[newUser.role] ?? '/inventory', { replace: true })
   }, [navigate])
 
   const hasRole = useCallback(
@@ -128,16 +128,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const stored = sessionStorage.getItem('tbs_token')
     if (!stored) {
-      // Demo-friendly fallback: allow frontend to run without backend auth.
-      setAuthToken('demo-token')
-      setTokenState('demo-token')
-      setUser(demoUser)
+      setAuthToken(null)
+      setTokenState(null)
+      setUser(null)
       setIsLoading(false)
       return
     }
 
     axiosInstance
-      .get<AuthUser>('/auth/me')
+      .get<AuthUser>('/auth/me', { timeout: 5000 })
       .then(res => {
         setTokenState(stored)
         setUser(res.data)
