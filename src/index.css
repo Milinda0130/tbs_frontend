@@ -84,7 +84,6 @@
   .card-container {
     @apply bg-surface_container_lowest border border-outline_variant rounded-lg shadow-card overflow-hidden;
   }
-}
 
   /* Card base */
   .card {
