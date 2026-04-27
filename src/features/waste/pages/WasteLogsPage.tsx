@@ -9,11 +9,9 @@ import {
   AlertCircle,
   ChevronLeft,
   ChevronRight,
-  MoreVertical,
   History
 } from 'lucide-react';
 import { Card, Badge, Button } from '../../../components/ui';
-import axiosInstance from '../../../api/axiosInstance';
 import { cn } from '../../../lib/utils';
 import WasteLogSlideOver from '../components/WasteLogSlideOver';
 
