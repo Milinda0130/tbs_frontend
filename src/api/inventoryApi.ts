@@ -1,19 +1,59 @@
-import axiosInstance from './axiosInstance'
+import axiosInstance from './axiosInstance';
 
-// ── Add your inventory-specific types and calls here ──
+export const getItems = async (params?: Record<string, unknown>) => {
+  const { data } = await axiosInstance.get('/inventory', { params });
+  return data;
+};
+
+export const getItem = async (id: string) => {
+  const { data } = await axiosInstance.get(`/inventory/${id}`);
+  return data;
+};
+
+export const getItemMovements = async (id: string) => {
+  const { data } = await axiosInstance.get(`/inventory/${id}/movements`);
+  return data;
+};
+
+export const createItem = async (payload: Record<string, unknown>) => {
+  const { data } = await axiosInstance.post('/inventory', payload);
+  return data;
+};
+
+export const updateItem = async (id: string, payload: Record<string, unknown>) => {
+  const { data } = await axiosInstance.put(`/inventory/${id}`, payload);
+  return data;
+};
+
+export const stockIn = async (id: string, payload: Record<string, unknown>) => {
+  const { data } = await axiosInstance.post(`/inventory/${id}/stock-in`, payload);
+  return data;
+};
+
+export const getLowStock = async (params?: Record<string, unknown>) => {
+  const { data } = await axiosInstance.get('/inventory/low-stock', { params });
+  return data;
+};
+
 export const inventoryApi = {
-  getAll: (params?: Record<string, unknown>) =>
-    axiosInstance.get('/inventory', { params }),
+  search: async (query: string) => {
+    const { data } = await axiosInstance.get('/inventory', {
+      params: { search: query },
+    });
+    return data;
+  },
 
-  getById: (id: number) =>
-    axiosInstance.get(`/inventory/${id}`),
+  getAll: async (params?: Record<string, unknown>) => getItems(params),
 
-  getLowStock: () =>
-    axiosInstance.get('/inventory/low-stock'),
+  getById: async (id: number | string) => getItem(String(id)),
 
-  update: (id: number, data: Record<string, unknown>) =>
-    axiosInstance.put(`/inventory/${id}`, data),
+  getLowStock: async (params?: Record<string, unknown>) => getLowStock(params),
 
-  adjustStock: (id: number, quantity: number, reason: string) =>
-    axiosInstance.post(`/inventory/${id}/adjust`, { quantity, reason }),
-}
+  update: async (id: number | string, payload: Record<string, unknown>) =>
+    updateItem(String(id), payload),
+
+  adjustStock: async (id: number | string, quantity: number, reason: string) => {
+    const { data } = await axiosInstance.post(`/inventory/${id}/adjust`, { quantity, reason });
+    return data;
+  },
+};
