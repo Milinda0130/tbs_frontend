@@ -3,12 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { 
   Search, 
   Filter, 
-  Trash2, 
   Plus,
   Calendar,
-  AlertCircle,
-  ChevronLeft,
-  ChevronRight,
   History
 } from 'lucide-react';
 import { Card, Badge, Button } from '../../../components/ui';
@@ -166,3 +162,4 @@ const WasteLogsPage: React.FC = () => {
 };
 
 export default WasteLogsPage;
+
