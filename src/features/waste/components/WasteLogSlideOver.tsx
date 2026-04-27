@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, Search, Calendar, AlertCircle, Info, Clock, Trash2, ArrowRight } from 'lucide-react';
+import { X, Search, Calendar, Info, Clock } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Button, Badge } from '../../../components/ui';
 import axiosInstance from '../../../api/axiosInstance';
 import { cn } from '../../../lib/utils';
 
@@ -46,7 +45,7 @@ const WasteLogSlideOver: React.FC<WasteLogSlideOverProps> = ({ open, onClose }) 
   });
 
   // Fetch Items based on store
-  const { data: items, isLoading: isLoadingItems } = useQuery<Item[]>({
+  const { data: items } = useQuery<Item[]>({
     queryKey: ['inventory', selectedStore],
     queryFn: async () => {
       if (!selectedStore) return [];

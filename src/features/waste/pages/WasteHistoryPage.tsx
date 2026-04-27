@@ -3,22 +3,15 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { 
   Search, 
-  Filter, 
   Trash2, 
   Plus,
-  Calendar,
-  AlertCircle,
-  ChevronLeft,
-  ChevronRight,
-  MoreVertical,
   FileDown,
   TrendingDown,
   DollarSign,
-  Info,
   ArrowUpRight,
   FilterX
 } from 'lucide-react';
-import { Card, Badge, Button, Input } from '../../../components/ui';
+import { Card, Badge, Button } from '../../../components/ui';
 import axiosInstance from '../../../api/axiosInstance';
 import { cn } from '../../../lib/utils';
 import WasteLogSlideOver from '../components/WasteLogSlideOver';
@@ -69,6 +62,7 @@ const WasteHistoryPage: React.FC = () => {
         },
         {
           id: 'W-2023-002',
+          item_id: 102,
           item_name: 'Chemical Reagent A-4',
           store: 'Chemistry Lab',
           category: 'Chemicals',
@@ -82,6 +76,7 @@ const WasteHistoryPage: React.FC = () => {
         },
         {
           id: 'W-2023-003',
+          item_id: 103,
           item_name: 'Granulated Sugar',
           store: 'Pastry Kitchen',
           category: 'Ingredients',
@@ -176,7 +171,7 @@ const WasteHistoryPage: React.FC = () => {
         <SummaryCard 
           title="Most Frequent Type" 
           value="Damaged" 
-          icon={AlertCircle} 
+          icon={Trash2}
           subtitle="24 incidents" 
           color="primary" 
         />
@@ -366,3 +361,4 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ title, value, icon: Icon, tre
 };
 
 export default WasteHistoryPage;
+

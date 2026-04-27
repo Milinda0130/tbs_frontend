@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { 
-  Plus, 
   Search, 
   Trash2, 
   AlertTriangle, 
@@ -37,13 +36,11 @@ const PracticalSessionFormPage: React.FC = () => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
 
   // Search ingredients
   useEffect(() => {
     const timer = setTimeout(async () => {
       if (searchTerm.length > 1) {
-        setIsSearching(true);
         try {
           const res = await axiosInstance.get(`/inventory?store=hospitality&sub=practical&search=${searchTerm}`);
           setSearchResults(res.data || []);
@@ -56,8 +53,6 @@ const PracticalSessionFormPage: React.FC = () => {
             { id: 103, name: 'Granulated Sugar', unit: 'kg', available_stock: 5 },
             { id: 104, name: 'Vanilla Extract', unit: 'liters', available_stock: 2 },
           ].filter(i => i.name.toLowerCase().includes(searchTerm.toLowerCase())));
-        } finally {
-          setIsSearching(false);
         }
       } else {
         setSearchResults([]);
@@ -315,3 +310,4 @@ const PracticalSessionFormPage: React.FC = () => {
 };
 
 export default PracticalSessionFormPage;
+

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Skeleton } from './Skeleton';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 
