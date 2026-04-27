@@ -1,228 +1,150 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { ItemListPage } from '@/features/inventory/pages/ItemListPage';
-import { ItemDetailPage } from '@/features/inventory/pages/ItemDetailPage';
-import { LowStockPage } from '@/features/inventory/pages/LowStockPage';
-import { SupplierListPage } from '@/features/suppliers/pages/SupplierListPage';
-import { SupplierDetailPage } from '@/features/suppliers/pages/SupplierDetailPage';
-import { PurchaseOrderListPage } from '@/features/purchaseOrders/pages/PurchaseOrderListPage';
-import { PurchaseOrderFormPage } from '@/features/purchaseOrders/pages/PurchaseOrderFormPage';
-import BorrowRequestListPage from '@/features/borrowing/pages/BorrowRequestListPage';
-import CreateBorrowRequestPage from '@/features/borrowing/pages/CreateBorrowRequestPage';
-import BorrowRequestDetailPage from '@/features/borrowing/pages/BorrowRequestDetailPage';
-import ApprovalQueuePage from '@/features/borrowing/pages/ApprovalQueuePage';
-import BorrowDocumentPage from '@/features/borrowing/pages/BorrowDocumentPage';
-import IssueItemsPage from '@/features/issuing/pages/IssueItemsPage';
-import IssuingHistoryPage from '@/features/issuing/pages/IssuingHistoryPage';
-import { useAuth, type UserRole } from '@/stores/AuthContext';
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { useAuth, type UserRole } from '@/stores/AuthContext'
+import { AppShell } from '@/components/layout/AppShell'
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary'
+
+/* ─── Lazy-loaded pages ───────────────────────────────────────────────────── */
+import { lazy, Suspense } from 'react'
+
+// Auth pages (no shell)
+const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
+const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'))
+const ResetPasswordPage = lazy(() => import('@/pages/auth/ResetPasswordPage'))
+const ForbiddenPage = lazy(() => import('@/pages/ForbiddenPage'))
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
+
+// Milinda — Dashboard & Profile
+const DashboardPage = lazy(() => import('@/pages/DashboardPage'))
+const MyProfilePage = lazy(() => import('@/pages/MyProfilePage'))
+
+// Thumula — Inventory
+import { ItemListPage } from '@/features/inventory/pages/ItemListPage'
+import { ItemDetailPage } from '@/features/inventory/pages/ItemDetailPage'
+import { LowStockPage } from '@/features/inventory/pages/LowStockPage'
+import { SupplierListPage } from '@/features/suppliers/pages/SupplierListPage'
+import { SupplierDetailPage } from '@/features/suppliers/pages/SupplierDetailPage'
+import { PurchaseOrderListPage } from '@/features/purchaseOrders/pages/PurchaseOrderListPage'
+import { PurchaseOrderFormPage } from '@/features/purchaseOrders/pages/PurchaseOrderFormPage'
+
+// Piyara — Borrowing & Issuing
+import BorrowRequestListPage from '@/features/borrowing/pages/BorrowRequestListPage'
+import CreateBorrowRequestPage from '@/features/borrowing/pages/CreateBorrowRequestPage'
+import BorrowRequestDetailPage from '@/features/borrowing/pages/BorrowRequestDetailPage'
+import ApprovalQueuePage from '@/features/borrowing/pages/ApprovalQueuePage'
+import BorrowDocumentPage from '@/features/borrowing/pages/BorrowDocumentPage'
+import IssueItemsPage from '@/features/issuing/pages/IssueItemsPage'
+import IssuingHistoryPage from '@/features/issuing/pages/IssuingHistoryPage'
+
+/* ─── Loading fallback ────────────────────────────────────────────────────── */
+
+function PageLoader() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <span className="material-symbols-outlined animate-spin text-[var(--primary)] text-[32px]">
+          progress_activity
+        </span>
+        <span className="text-sm text-slate-400">Loading...</span>
+      </div>
+    </div>
+  )
+}
+
+/* ─── Role-default route mapping ──────────────────────────────────────────── */
 
 function getDefaultRoute(role?: UserRole): string {
   const byRole: Record<UserRole, string> = {
-    Admin: '/inventory',
+    Admin: '/dashboard',
     'Main Coordinator': '/purchase-orders',
     'Stock Keeper': '/inventory',
-    'Audit Officer': '/issuing-history',
+    'Audit Officer': '/reports',
     Faculty: '/borrow-requests',
     'Dept Admin': '/borrow-requests',
-  };
-
-  return role ? byRole[role] : '/login';
+  }
+  return role ? byRole[role] : '/login'
 }
 
+/* ─── Route guards ────────────────────────────────────────────────────────── */
+
 function RootRedirect() {
-  const { isLoading, isAuthenticated, user } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">
-        Loading...
-      </div>
-    );
-  }
-
-  return <Navigate to={isAuthenticated ? getDefaultRoute(user?.role) : '/login'} replace />;
+  const { isLoading, isAuthenticated, user } = useAuth()
+  if (isLoading) return <PageLoader />
+  return <Navigate to={isAuthenticated ? getDefaultRoute(user?.role) : '/login'} replace />
 }
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">
-        Loading...
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return <>{children}</>;
+  const { isAuthenticated, isLoading } = useAuth()
+  if (isLoading) return <PageLoader />
+  if (!isAuthenticated) return <Navigate to="/login" replace />
+  return <>{children}</>
 }
 
-function RoleRoute({
-  children,
-  roles,
-}: {
-  children: React.ReactNode;
-  roles: UserRole[];
-}) {
-  const { user, isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">
-        Loading...
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
+function RoleRoute({ children, roles }: { children: React.ReactNode; roles: UserRole[] }) {
+  const { user, isAuthenticated, isLoading } = useAuth()
+  if (isLoading) return <PageLoader />
+  if (!isAuthenticated) return <Navigate to="/login" replace />
   if (!user || !roles.includes(user.role)) {
-    return <Navigate to="/borrow-requests" replace />;
+    return <Navigate to="/403" replace />
   }
-
-  return <>{children}</>;
+  return <>{children}</>
 }
+
+/* ─── App Routes ──────────────────────────────────────────────────────────── */
 
 export default function AppRoutes() {
   return (
-    <Routes>
-      <Route
-        path="/login"
-        element={<div className="min-h-screen bg-gray-950 flex items-center justify-center text-white">Login page coming from Milinda</div>}
-      />
+    <ErrorBoundary>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        {/* ─── Public routes (no shell) ──────────────────────────── */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/403" element={<ForbiddenPage />} />
 
-      <Route
-        path="/inventory"
-        element={
-          <ProtectedRoute>
-            <ItemListPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/inventory/low-stock"
-        element={
-          <ProtectedRoute>
-            <LowStockPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/inventory/:id"
-        element={
-          <ProtectedRoute>
-            <ItemDetailPage />
-          </ProtectedRoute>
-        }
-      />
+        {/* ─── Authenticated routes (inside AppShell) ────────────── */}
+        <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
 
-      <Route
-        path="/suppliers"
-        element={
-          <ProtectedRoute>
-            <SupplierListPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/suppliers/:id"
-        element={
-          <ProtectedRoute>
-            <SupplierDetailPage />
-          </ProtectedRoute>
-        }
-      />
+          {/* Milinda — Dashboard & Profile */}
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/profile" element={<MyProfilePage />} />
 
-      <Route
-        path="/purchase-orders"
-        element={
-          <ProtectedRoute>
-            <PurchaseOrderListPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/purchase-orders/create"
-        element={
-          <ProtectedRoute>
-            <PurchaseOrderFormPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/purchase-orders/:id/edit"
-        element={
-          <ProtectedRoute>
-            <PurchaseOrderFormPage />
-          </ProtectedRoute>
-        }
-      />
+          {/* Thumula — Inventory */}
+          <Route path="/inventory" element={<ItemListPage />} />
+          <Route path="/inventory/low-stock" element={<LowStockPage />} />
+          <Route path="/inventory/:id" element={<ItemDetailPage />} />
 
-      <Route
-        path="/borrow-requests"
-        element={
-          <ProtectedRoute>
-            <BorrowRequestListPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/borrow-requests/create"
-        element={
-          <ProtectedRoute>
-            <CreateBorrowRequestPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/borrow-requests/:id/document"
-        element={
-          <ProtectedRoute>
-            <BorrowDocumentPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/borrow-requests/:id"
-        element={
-          <ProtectedRoute>
-            <BorrowRequestDetailPage />
-          </ProtectedRoute>
-        }
-      />
+          {/* Thumula — Suppliers */}
+          <Route path="/suppliers" element={<SupplierListPage />} />
+          <Route path="/suppliers/:id" element={<SupplierDetailPage />} />
 
-      <Route
-        path="/approval-queue"
-        element={
-          <RoleRoute roles={['Admin', 'Dept Admin']}>
-            <ApprovalQueuePage />
-          </RoleRoute>
-        }
-      />
-      <Route
-        path="/issue-items"
-        element={
-          <ProtectedRoute>
-            <IssueItemsPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/issuing-history"
-        element={
-          <ProtectedRoute>
-            <IssuingHistoryPage />
-          </ProtectedRoute>
-        }
-      />
+          {/* Thumula — Purchase Orders */}
+          <Route path="/purchase-orders" element={<PurchaseOrderListPage />} />
+          <Route path="/purchase-orders/create" element={<PurchaseOrderFormPage />} />
+          <Route path="/purchase-orders/:id/edit" element={<PurchaseOrderFormPage />} />
 
-      <Route path="/" element={<RootRedirect />} />
-      <Route path="*" element={<RootRedirect />} />
-    </Routes>
-  );
+          {/* Piyara — Borrowing */}
+          <Route path="/borrow-requests" element={<BorrowRequestListPage />} />
+          <Route path="/borrow-requests/create" element={<CreateBorrowRequestPage />} />
+          <Route path="/borrow-requests/:id/document" element={<BorrowDocumentPage />} />
+          <Route path="/borrow-requests/:id" element={<BorrowRequestDetailPage />} />
+
+          {/* Piyara — Approval Queue (role-restricted) */}
+          <Route
+            path="/approval-queue"
+            element={<RoleRoute roles={['Admin', 'Dept Admin']}><ApprovalQueuePage /></RoleRoute>}
+          />
+
+          {/* Piyara — Issuing */}
+          <Route path="/issue-items" element={<IssueItemsPage />} />
+          <Route path="/issuing-history" element={<IssuingHistoryPage />} />
+        </Route>
+
+        {/* ─── Fallbacks ─────────────────────────────────────────── */}
+        <Route path="/" element={<RootRedirect />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
+    </ErrorBoundary>
+  )
 }

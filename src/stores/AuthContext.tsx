@@ -80,13 +80,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     department: 'Compliance',
   }
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
+    // Attempt backend logout if we have a token
+    if (_token && !DEMO_MODE) {
+      try {
+        await axiosInstance.post('/auth/logout')
+      } catch (err) {
+        // Ignore errors on logout (e.g. token already expired)
+        console.warn('Backend logout failed', err)
+      }
+    }
+
     setAuthToken(null)
     setTokenState(null)
     setUser(null)
     queryClient.clear()
     navigate('/login', { replace: true })
-  }, [navigate])
+  }, [navigate, DEMO_MODE])
 
   // Keep ref always up to date so axiosInstance can call it
   logoutRef.current = logout
