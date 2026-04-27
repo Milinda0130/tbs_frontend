@@ -38,24 +38,10 @@ function RoleRoute({
   }
   return <>{children}</>
 }
+import AppRoutes from '@/routes';
 
 function App() {
-  return (
-    <Routes>
-      <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-        <Route path="/users" element={<UserListPage />} />
-        <Route path="/users/:id" element={<UserDetailPage />} />
-        <Route path="/reports" element={<ReportsHubPage />} />
-        <Route path="/reports/monthly-stock-usage" element={<MonthlyStockUsageReportPage />} />
-        <Route path="/reports/stock-movements" element={<StockMovementReportPage />} />
-        <Route path="/reports/borrowing" element={<BorrowingReportPage />} />
-        <Route path="/reports/department-issuing" element={<DepartmentIssuingReportPage />} />
-        <Route path="/audit-logs" element={<RoleRoute roles={['Admin', 'Main Coordinator', 'Audit Officer']}><AuditLogPage /></RoleRoute>} />
-        <Route path="/notifications" element={<NotificationsPage />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/reports" replace />} />
-    </Routes>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
