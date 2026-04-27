@@ -3,8 +3,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useAuth, type UserRole } from '@/stores/AuthContext'
 import { notificationsApi } from '@/api/notificationsApi'
-import { NotificationDropdown } from '@/features/chamath/NotificationDropdown'
-import { cn } from '@/lib/utils'
+import { NotificationDropdown } from '@/features/notifications/components/NotificationDropdown'
 
 /**
  * AppShell — Main authenticated layout.

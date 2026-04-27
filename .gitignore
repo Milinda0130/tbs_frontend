@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+stitch_tbs_campus_ims_login
+TBS_Frontend_Developer_Plan.pdf
+.env
+
+.env.local
