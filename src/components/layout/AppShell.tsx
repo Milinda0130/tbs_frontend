@@ -3,7 +3,7 @@ import { Bell, Moon, Sun } from 'lucide-react'
 import { Link, Outlet } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { notificationsApi } from '@/api/notificationsApi'
-import { NotificationDropdown } from '@/features/chamath/NotificationDropdown'
+import { NotificationDropdown } from '@/features/notifications/components/NotificationDropdown'
 
 /**
  * AppShell

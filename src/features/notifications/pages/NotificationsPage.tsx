@@ -2,7 +2,7 @@ import { AlertOctagon, AlertTriangle, Bell, CheckCircle, Clock, XCircle } from '
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { notificationsApi } from '@/api/notificationsApi'
-import { toRelativeTime } from '@/features/chamath/utils'
+import { NotificationListItem } from '@/features/notifications/components/NotificationListItem'
 
 /**
  * NotificationsPage
@@ -56,23 +56,16 @@ export function NotificationsPage() {
         {notificationsQuery.isLoading ? <div className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">Loading notifications...</div> : null}
         {!notificationsQuery.isLoading && notifications.length === 0 ? <div className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">No notifications available for this filter.</div> : null}
         {notifications.map(item => (
-          <button
+          <NotificationListItem
             key={item.id}
-            type="button"
-            className={`w-full rounded-lg border p-4 text-left ${item.is_read ? 'border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-900/60' : 'border-blue-300 bg-blue-50 hover:bg-blue-100/40 dark:border-blue-700 dark:bg-blue-950/20 dark:hover:bg-blue-950/30'}`}
-            onClick={async () => { await notificationsApi.markRead(item.id); navigate(item.link) }}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className={`rounded-md bg-slate-100 p-1.5 ${typeMeta[item.type]?.className ?? 'text-slate-600'} dark:bg-slate-950/80 dark:text-slate-300`}>
-                  {(() => { const Icon = typeMeta[item.type]?.icon ?? Bell; return <Icon size={14} /> })()}
-                </span>
-                <h3 className="font-medium">{item.title}</h3>
-              </div>
-              <span className="text-xs text-slate-500 dark:text-slate-400">{toRelativeTime(item.created_at)}</span>
-            </div>
-            <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{item.description}</p>
-          </button>
+            item={item}
+            icon={typeMeta[item.type]?.icon ?? Bell}
+            iconClassName={typeMeta[item.type]?.className ?? 'text-slate-600'}
+            onClick={async () => {
+              await notificationsApi.markRead(item.id)
+              navigate(item.link)
+            }}
+          />
         ))}
       </div>
       <div className="flex items-center justify-end gap-2">

@@ -12,7 +12,7 @@ import {
   StockMovementReportPage,
   UserDetailPage,
   UserListPage,
-} from '@/features/chamath'
+} from '@/features'
 
 /**
  * App route composition focused on Chamath module ownership scope.
