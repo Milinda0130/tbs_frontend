@@ -5,15 +5,8 @@ import {
   Printer, 
   FileDown, 
   ChevronRight, 
-  AlertTriangle, 
-  TrendingDown, 
-  Users, 
-  DollarSign,
-  BarChart3,
-  Calendar,
-  User,
-  Clock,
-  ArrowLeft
+  AlertTriangle,
+  BarChart3
 } from 'lucide-react';
 import { Card, Badge, Button } from '../../../components/ui';
 import axiosInstance from '../../../api/axiosInstance';
@@ -350,3 +343,4 @@ const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, isWarning }
 );
 
 export default SessionReportPage;
+

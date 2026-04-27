@@ -3,7 +3,9 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useAuth, type UserRole } from '@/stores/AuthContext'
 import { notificationsApi } from '@/api/notificationsApi'
+import axiosInstance from '@/api/axiosInstance'
 import { NotificationDropdown } from '@/features/notifications/components/NotificationDropdown'
+import { cn } from '@/lib/utils'
 
 /**
  * AppShell — Main authenticated layout.
@@ -45,7 +47,7 @@ function useSidebarBadges() {
     queryFn: async () => {
       // In demo mode or when API is unavailable, return mock count
       try {
-        const { data } = await (await import('@/api/axiosInstance')).default.get<{ count: number }>('/inventory/low-stock-count')
+        const { data } = await axiosInstance.get<{ count: number }>('/inventory/low-stock-count')
         return data.count
       } catch {
         return 84 // demo fallback
@@ -60,7 +62,7 @@ function useSidebarBadges() {
     queryKey: ['sidebar-pending-count'],
     queryFn: async () => {
       try {
-        const { data } = await (await import('@/api/axiosInstance')).default.get<{ count: number }>('/borrowing/pending-count')
+        const { data } = await axiosInstance.get<{ count: number }>('/borrowing/pending-count')
         return data.count
       } catch {
         return 27 // demo fallback

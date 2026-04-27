@@ -4,20 +4,16 @@ import { useNavigate, Link } from 'react-router-dom';
 import { 
   Plus, 
   Calendar, 
-  Users, 
   Eye, 
   Edit3, 
-  Play, 
-  CheckCircle2, 
-  Filter, 
-  MoreHorizontal,
+  Filter,
   ChevronLeft,
   ChevronRight,
   BarChart3
 } from 'lucide-react';
-import { PageHeader, Card, Badge, Button, Chip } from '../../../components/ui';
+import { PageHeader, Card, Badge, Button } from '../../../components/ui';
 import axiosInstance from '../../../api/axiosInstance';
-import { cn, formatDate } from '../../../lib/utils';
+import { cn } from '../../../lib/utils';
 
 type SessionStatus = 'all' | 'planned' | 'in_progress' | 'completed';
 
@@ -25,7 +21,7 @@ const PracticalSessionListPage: React.FC = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [status, setStatus] = useState<SessionStatus>('all');
-  const [dateRange, setDateRange] = useState({ from: '', to: '' });
+  const [dateRange] = useState({ from: '', to: '' });
 
   // Fetch sessions
   const { data: sessions, isLoading } = useQuery({
@@ -266,3 +262,4 @@ const PracticalSessionListPage: React.FC = () => {
 };
 
 export default PracticalSessionListPage;
+

@@ -147,7 +147,7 @@ export function ImageUpload({
                 Change
               </Button>
               <Button
-                variant="danger"
+                variant="error"
                 size="sm"
                 onClick={removeImage}
               >
