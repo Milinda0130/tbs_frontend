@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { 
-  Search, 
-  Filter, 
-  RotateCcw, 
-  ChevronLeft, 
-  ChevronRight,
+import {
+  Search,
+  RotateCcw,
   Clock,
   User,
-  ArrowRight
+  Filter
 } from 'lucide-react';
 import { Card, Badge, Button } from '../../../components/ui';
-import axiosInstance from '../../../api/axiosInstance';
-import { cn } from '../../../lib/utils';
 import ReturnSlideOver from '../components/ReturnSlideOver';
 
 interface BorrowRequest {
@@ -166,3 +161,4 @@ const EquipmentReturnsPage: React.FC = () => {
 };
 
 export default EquipmentReturnsPage;
+

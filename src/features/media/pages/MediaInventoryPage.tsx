@@ -11,15 +11,11 @@ import {
   Camera, 
   Mic2, 
   Lightbulb, 
-  MoreVertical,
   ChevronLeft,
   ChevronRight,
-  Package,
-  Wrench,
-  AlertCircle
+  Package
 } from 'lucide-react';
 import { Card, Badge, Button } from '../../../components/ui';
-import axiosInstance from '../../../api/axiosInstance';
 import { cn } from '../../../lib/utils';
 
 interface MediaItem {
@@ -37,11 +33,11 @@ interface MediaItem {
 const MediaInventoryPage: React.FC = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-  const [filters, setFilters] = useState({
+  const filters = {
     category: 'All',
     condition: 'All',
     status: 'All'
-  });
+  };
 
   // Mock data for demo based on image
   const { data: items, isLoading } = useQuery<MediaItem[]>({

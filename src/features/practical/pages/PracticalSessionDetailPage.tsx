@@ -2,23 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
-  ArrowLeft, 
   Calendar, 
   Users, 
   CheckCircle2, 
   Play, 
   FileText, 
-  AlertCircle, 
   Search,
   Package,
   TrendingDown,
-  TrendingUp,
   DollarSign,
   ChevronRight,
-  Info,
   Download
 } from 'lucide-react';
-import { PageHeader, Card, Badge, Button, Input } from '../../../components/ui';
+import { Card, Badge, Button } from '../../../components/ui';
 import axiosInstance from '../../../api/axiosInstance';
 import { cn } from '../../../lib/utils';
 
@@ -344,3 +340,4 @@ const MetricCard: React.FC<MetricCardProps> = ({ title, value, icon: Icon, color
 };
 
 export default PracticalSessionDetailPage;
+
